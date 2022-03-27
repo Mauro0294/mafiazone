@@ -27,7 +27,7 @@ include "verbinding.php";
     $rows = $stmt->fetch();
     $sum_cash = $rows['sum_cash']
     ?>
-    <td><?php echo $sum_cash ?></td>
+    <td><?php echo "€" . number_format($sum_cash, 0, ',', '.') ?></td>
     </tr>
     <tr>
     <td>Totaal bank</td>
@@ -37,11 +37,11 @@ include "verbinding.php";
     $rows = $stmt->fetch();
     $sum_bank = $rows['sum_bank']
     ?>
-    <td><?php echo $sum_bank ?></td>
+    <td><?php echo "€" . number_format($sum_bank, 0, ',', '.') ?></td>
     </tr>
     <tr>
     <td>Totaal geld</td>
-    <td><?php echo $sum_cash + $sum_bank?></td>
+    <td><?php echo "€" . number_format($sum_cash + $sum_bank, 0, ',', '.') ?></td>
     </tr>
     <tr>
     <td>Totaal kogels</td>
@@ -52,6 +52,26 @@ include "verbinding.php";
     $sum_kogels = $rows['sum_kogels']
     ?>
     <td><?php echo $sum_kogels ?></td>
+    </tr>
+    <tr>
+    <td>Totaal power</td>
+    <?php
+    $stmt = $pdo->prepare("SELECT SUM(power) as sum_power FROM users");
+    $stmt->execute();
+    $rows = $stmt->fetch();
+    $sum_power = $rows['sum_power']
+    ?>
+    <td><?php echo number_format($sum_power, 0, ',', '.') ?></td>
+    </tr>
+    <tr>
+    <td>Totaal moorden</td>
+    <?php
+    $stmt = $pdo->prepare("SELECT SUM(moorden) as sum_moorden FROM users");
+    $stmt->execute();
+    $rows = $stmt->fetch();
+    $sum_moorden = $rows['sum_moorden']
+    ?>
+    <td><?php echo $sum_moorden ?></td>
     </tr>
     </table>
     </body>
