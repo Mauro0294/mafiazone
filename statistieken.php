@@ -71,7 +71,7 @@ include "verbinding.php";
     $rows = $stmt->fetch();
     $sum_moorden = $rows['sum_moorden']
     ?>
-    <td><?php echo $sum_moorden ?></td>
+    <td><?php echo number_format($sum_moorden, 0, ',', '.') ?></td>
     </tr>
     </table>
     </body>

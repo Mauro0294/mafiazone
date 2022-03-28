@@ -1,0 +1,61 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #0E0500;
+    font-family: Arial;
+}
+
+.banner {
+    width: 100vw;
+    height: auto;
+    position: relative;
+    margin-top: -15rem;
+}
+
+
+ul {
+    display: flex;
+    background: black;
+    color: white;
+    height: 10rem;
+    font-size: 2.5rem;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0;
+}
+
+div {
+    display: flex;
+    gap: 10rem;
+}
+
+li {
+    list-style-type: none;
+    transition: 0.5s;
+}
+
+.current {
+    color: grey;
+}
+
+li:hover {
+    color: grey;
+    cursor: pointer;
+}
+
+.sign-up {
+    border: 1px solid #434B8A;
+    padding: 1.25rem;
+    transition: 0.5s;
+}
+
+.sign-up:hover {
+    border: 1px solid white;
+    color: black;
+    background: white;
+    cursor: pointer;
+}
