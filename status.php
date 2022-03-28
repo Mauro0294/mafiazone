@@ -1,6 +1,7 @@
 <?php
-include "verbinding.php";
 session_start();
+
+include "notLoggedIn.php";
 
 error_reporting(0);
 
@@ -41,6 +42,7 @@ foreach ($rows as $row) {
     <td> " . number_format($row['moorden'], 0, ',', '.') . " </td>
     </tr>
     </table>
+    <a href='logout.php'>Uitloggen</a>
     ";
 }
 ?>

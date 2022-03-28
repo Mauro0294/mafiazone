@@ -1,6 +1,7 @@
 <?php
-include "verbinding.php";
 session_start();
+
+include "notLoggedIn.php";
 
 ?>
 <!-- Algemente statistieken -->

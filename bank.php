@@ -1,6 +1,7 @@
 <?php
-include "verbinding.php";
 session_start();
+
+include "notLoggedIn.php";
 
 error_reporting(0);
 
