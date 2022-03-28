@@ -1,9 +1,12 @@
 <?php
 include "verbinding.php";
+session_start();
 
 error_reporting(0);
 
-$stmt = $pdo->prepare("SELECT * from users WHERE naam = 'Mauro'");
+$username = $_SESSION['username'];
+
+$stmt = $pdo->prepare("SELECT * from users WHERE gebruikersnaam = '$username'");
 $stmt->execute();
 $rows = $stmt->fetchAll();
 
@@ -43,7 +46,7 @@ foreach ($rows as $row) {
         </tr>
             <td colspan='2'><b>Huidige credits:</b>
             <?php
-            $stmt = $pdo->prepare("SELECT credits from users WHERE naam = 'Mauro'");
+            $stmt = $pdo->prepare("SELECT credits from users WHERE gebruikersnaam = '$username'");
             $stmt->execute();
             $row = $stmt->fetch();
             echo number_format($row['credits'], 0, ',', '.');
@@ -56,7 +59,7 @@ foreach ($rows as $row) {
 </table>
 
 <?php
-$stmt = $pdo->prepare("SELECT * from users WHERE naam = 'Mauro'");
+$stmt = $pdo->prepare("SELECT * from users WHERE gebruikersnaam = '$username'");
 $stmt->execute();
 $rows = $stmt->fetchAll();
 foreach ($rows as $row) {
@@ -72,8 +75,8 @@ foreach ($rows as $row) {
                 if ($credits >= 100 * $aantal) {
                     $power += 500000 * $aantal;
                     $credits -= 100 * $aantal;
-                    $stmt1 = $pdo->prepare("UPDATE users SET power = " . $power . " WHERE naam = 'Mauro'");
-                    $stmt2 = $pdo->prepare("UPDATE users SET credits = " . $credits . " WHERE naam = 'Mauro'");
+                    $stmt1 = $pdo->prepare("UPDATE users SET power = " . $power . " WHERE gebruikersnaam = '$username'");
+                    $stmt2 = $pdo->prepare("UPDATE users SET credits = " . $credits . " WHERE gebruikersnaam = '$username'");
                     $stmt1->execute();
                     $stmt2->execute();
                     header("Refresh: 0");
@@ -86,8 +89,8 @@ foreach ($rows as $row) {
                 if ($credits >= 300 * $aantal) {
                     $power += 1500000 * $aantal;
                     $credits -= 300 * $aantal;
-                    $stmt1 = $pdo->prepare("UPDATE users SET power = " . $power . " WHERE naam = 'Mauro'");
-                    $stmt2 = $pdo->prepare("UPDATE users SET credits = " . $credits . " WHERE naam = 'Mauro'");
+                    $stmt1 = $pdo->prepare("UPDATE users SET power = " . $power . " WHERE gebruikersnaam = '$username'");
+                    $stmt2 = $pdo->prepare("UPDATE users SET credits = " . $credits . " WHERE gebruikersnaam = '$username'");
                     $stmt1->execute();
                     $stmt2->execute();
                     header("Refresh: 0");
@@ -100,8 +103,8 @@ foreach ($rows as $row) {
                 if ($credits >= 50 * $aantal) {
                     $bank += 20000000 * $aantal;
                     $credits -= 50 * $aantal;
-                    $stmt1 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . " WHERE naam = 'Mauro'");
-                    $stmt2 = $pdo->prepare("UPDATE users SET credits = " . $credits . " WHERE naam = 'Mauro'");
+                    $stmt1 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . " WHERE gebruikersnaam = '$username'");
+                    $stmt2 = $pdo->prepare("UPDATE users SET credits = " . $credits . " WHERE gebruikersnaam = '$username'");
                     $stmt1->execute();
                     $stmt2->execute();
                     header("Refresh: 0");
@@ -114,8 +117,8 @@ foreach ($rows as $row) {
                 if ($credits >= 125 * $aantal) {
                     $bank += 50000000 * $aantal;
                     $credits -= 125 * $aantal;
-                    $stmt1 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . " WHERE naam = 'Mauro'");
-                    $stmt2 = $pdo->prepare("UPDATE users SET credits = " . $credits . " WHERE naam = 'Mauro'");
+                    $stmt1 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . " WHERE gebruikersnaam = '$username'");
+                    $stmt2 = $pdo->prepare("UPDATE users SET credits = " . $credits . " WHERE gebruikersnaam = '$username'");
                     $stmt1->execute();
                     $stmt2->execute();
                     header("Refresh: 0");

@@ -1,17 +1,20 @@
 <?php
 include "verbinding.php";
+session_start();
 
 error_reporting(0);
 
-$stmt = $pdo->prepare("SELECT * from users WHERE naam = 'Mauro'");
+$username = $_SESSION['username'];
+
+$stmt = $pdo->prepare("SELECT * from users WHERE gebruikersnaam = '$username'");
 $stmt->execute();
 $rows = $stmt->fetchAll();
 
 // Overzicht
 foreach ($rows as $row) {
-    echo "Ingelogd als " . $row['naam'] . "\n";
-    echo "Cash: €" . $row['cashgeld'] . "\n";
-    echo "Bank: €" . $row['bankgeld'] . "\n";
+    echo "Ingelogd als " . $row['gebruikersnaam'] . "\n";
+    echo "Cash: €" . number_format($row['cashgeld'], 0, ',', '.') . "\n";
+    echo "Bank: €" . number_format($row['bankgeld'], 0, ',', '.') . "\n";
 
 echo "
     <form method='POST'>
@@ -43,8 +46,8 @@ if (isset($submit)) {
                     if ($bedrag <= $cash) {
                         $cash -= $bedrag;
                         $bank += $bedrag;
-                        $stmt1 = $pdo->prepare("UPDATE users SET cashgeld = " . $cash . "");
-                        $stmt2 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . "");
+                        $stmt1 = $pdo->prepare("UPDATE users SET cashgeld = " . $cash . " WHERE gebruikersnaam = 'Mauro'");
+                        $stmt2 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . " WHERE gebruikersnaam = 'Mauro'");
                         $stmt1->execute() && $stmt2->execute();
                         header("Refresh: 0"); 
                     }
@@ -55,8 +58,8 @@ if (isset($submit)) {
                     if ($bedrag <= $bank) {
                         $cash += $bedrag;
                         $bank -= $bedrag;
-                        $stmt1 = $pdo->prepare("UPDATE users SET cashgeld = " . $cash . "");
-                        $stmt2 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . "");
+                        $stmt1 = $pdo->prepare("UPDATE users SET cashgeld = " . $cash . " WHERE gebruikersnaam = 'Mauro'");
+                        $stmt2 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . " WHERE gebruikersnaam = 'Mauro'");
                         $stmt1->execute() && $stmt2->execute();
                         header("Refresh: 0");
                     }

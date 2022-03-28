@@ -1,17 +1,20 @@
 <?php
 include "verbinding.php";
+session_start();
 
 error_reporting(0);
 
-$stmt = $pdo->prepare("SELECT * from users WHERE naam = 'Mauro'");
+$username = $_SESSION['username'];
+
+$stmt = $pdo->prepare("SELECT * from users WHERE gebruikersnaam = '$username'");
 $stmt->execute();
 $rows = $stmt->fetchAll();
 
 // Overzicht
 foreach ($rows as $row) {
-    echo "Ingelogd als " . $row['naam'] . "\n";
-    echo "Cash: €" . $row['cashgeld'] . "\n";
-    echo "Bank: €" . $row['bankgeld'] . "\n";
+    echo "Ingelogd als " . $row['gebruikersnaam'] . "\n";
+    echo "Cash: €" . number_format($row['cashgeld'], 0, ',', '.') . "\n";
+    echo "Bank: €" . number_format($row['bankgeld'], 0, ',', '.') . "\n";
     echo "
     <table>
     <tr>
@@ -19,11 +22,7 @@ foreach ($rows as $row) {
     </tr>
     <tr>
     <td>Naam</td>
-    <td> " . $row['naam'] . " </td>
-    </tr>
-    <tr>
-    <td>Rank</td>
-    <td> " . $row['rank'] . " </td>
+    <td> " . $row['gebruikersnaam'] . " </td>
     </tr>
     <tr>
     <td>Kogels</td>
@@ -34,8 +33,8 @@ foreach ($rows as $row) {
     <td> " . number_format($row['power'], 0, ',', '.') . " </td>
     </tr>
     <tr>
-    <td>Belcredits</td>
-    <td> " . number_format($row['belcredits'], 0, ',', '.') . " </td>
+    <td>Credits</td>
+    <td> " . number_format($row['credits'], 0, ',', '.') . " </td>
     </tr>
     <tr>
     <td>Moorden</td>
