@@ -2,7 +2,7 @@
 include "notLoggedIn.php";
 
 ?>
-<!-- Algemenee statistieken -->
+<!-- Algemene statistieken -->
 <html>
     <body>
     <table>
@@ -75,6 +75,67 @@ include "notLoggedIn.php";
     </tr>
     <tr>
 </tr>
+    </table>
+    <table>
+    <tr>
+    <th colspan='2'>Meeste power</th>
+    </tr>
+    <?php
+    $stmt = $pdo->prepare("SELECT * FROM users ORDER BY power DESC LIMIT 10");
+    $stmt->execute();
+    $rows = $stmt->fetchAll();
+    foreach($rows as $row) {
+        echo "<tr>";
+        echo "<td>" . $row['gebruikersnaam'] . "</td>";
+        echo "<td>" . number_format($row['power'], 0, ',', '.') . "</td>";
+        echo "</tr>";
+    }
+    ?>
+    <tr>
+    <th colspan='2'>Rijkste spelers</th>
+    </tr>
+    <?php
+    $stmt = $pdo->prepare("SELECT * FROM users ORDER BY bankgeld DESC LIMIT 10");
+    $stmt->execute();
+    $rows = $stmt->fetchAll();
+    foreach($rows as $row) {
+        $geld = $row['cashgeld'] + $row['bankgeld'];
+        echo "<tr>";
+        echo "<td>" . $row['gebruikersnaam'] . "</td>";
+        echo "<td>" . number_format($geld, 0, ',', '.') . "</td>";
+        echo "</tr>";
+    }
+    ?>
+
+
+    <tr>
+    <th colspan='2'>Meeste kogels</th>
+    </tr>
+    <?php
+    $stmt = $pdo->prepare("SELECT * FROM users ORDER BY kogels DESC LIMIT 10");
+    $stmt->execute();
+    $rows = $stmt->fetchAll();
+    foreach($rows as $row) {
+        echo "<tr>";
+        echo "<td>" . $row['gebruikersnaam'] . "</td>";
+        echo "<td>" . number_format($row['kogels'], 0, ',', '.') . "</td>";
+        echo "</tr>";
+    }
+    ?>
+    <tr>
+    <th colspan='2'>Meeste moorden</th>
+    </tr>
+    <?php
+    $stmt = $pdo->prepare("SELECT * FROM users ORDER BY moorden DESC LIMIT 10");
+    $stmt->execute();
+    $rows = $stmt->fetchAll();
+    foreach($rows as $row) {
+        echo "<tr>";
+        echo "<td>" . $row['gebruikersnaam'] . "</td>";
+        echo "<td>" . number_format($row['moorden'], 0, ',', '.') . "</td>";
+        echo "</tr>";
+    }
+    ?>
     </table>
     </body>
 </html>
