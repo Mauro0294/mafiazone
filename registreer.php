@@ -58,8 +58,8 @@ session_start();
     } elseif ($row1['num'] > 0) {
       echo '<script>alert("Email bestaat al!")</script>';
     } else {
-      $sql = "INSERT INTO `users` (`gebruikersnaam`, `email`, `wachtwoord`, `cashgeld`, `bankgeld`, `power`, `kogels`, `credits`, `moorden`) 
-    VALUES (:gebruikersnaam, :email, :wachtwoord, :cashgeld, :bankgeld, :power, :kogels, :credits, :moorden) ";
+      $sql = "INSERT INTO `users` (`gebruikersnaam`, `email`, `wachtwoord`, `cashgeld`, `bankgeld`, `power`, `kogels`, `credits`, `moorden`, `gezondheid`) 
+    VALUES (:gebruikersnaam, :email, :wachtwoord, :cashgeld, :bankgeld, :power, :kogels, :credits, :moorden, :gezondheid) ";
       $sql_run = $pdo->prepare($sql);
       $result = $sql_run->execute(array(
         ":gebruikersnaam" => $user,
@@ -67,6 +67,7 @@ session_start();
         ":cashgeld" => 0, ":bankgeld" => 0,
         ":power" => 0, ":kogels" => 0,
         ":credits" => 0, ":moorden" => 0,
+        ":gezondheid" => 100,
       ));
       header("Location: login.php");
     }

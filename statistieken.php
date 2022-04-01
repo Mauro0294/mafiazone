@@ -1,10 +1,8 @@
 <?php
-session_start();
-
 include "notLoggedIn.php";
 
 ?>
-<!-- Algemente statistieken -->
+<!-- Algemenee statistieken -->
 <html>
     <body>
     <table>
@@ -75,6 +73,12 @@ include "notLoggedIn.php";
     ?>
     <td><?php echo number_format($sum_moorden, 0, ',', '.') ?></td>
     </tr>
+    <tr>
+</tr>
     </table>
     </body>
 </html>
+<!-- Einde algemene statistieken -->
+<?php
+
+?>
