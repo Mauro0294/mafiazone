@@ -10,7 +10,7 @@ $row = $stmt->fetch();
 
 $userid = $row['id'];
 
-$stmt2 = $pdo->prepare("SELECT * FROM misdaad_timers WHERE user_id = '$userid'");
+$stmt2 = $pdo->prepare("SELECT * FROM autostelen_timers WHERE user_id = '$userid'");
 $stmt2->execute();
 $row2 = $stmt2->fetch();
 
@@ -18,17 +18,17 @@ $date = $row2['date'];
 $currenttime = time();
 
 $verschil = $currenttime - $date;
-$wachttijd = 180;
+$wachttijd = 300;
 
 function echoDifference() {
     echo "Je moet nog " . ($wachttijd - $verschil) . " seconden wachten!";
 }
 
 if ($verschil <= $wachttijd) {
-    echo "Je kan geen misdaad plegen!<br />";
+    echo "Je kan geen auto stelen!<br />";
     echo "Je moet nog " . ($wachttijd - $verschil) . " seconden wachten!";
     } else {
-    echo "Je kan een misdaad plegen!";
+    echo "<p class='possible'>Je kan een auto stelen!</p>";
     echo "
     <html>
     <form method='POST'>
@@ -49,19 +49,27 @@ $id = $row['id'];
 $submit = $_POST['submit'];
 if (isset($submit)) {
     $timepressed = time();
-    $removestmt = $pdo->prepare("DELETE FROM misdaad_timers WHERE user_id = '$id'");
+    $removestmt = $pdo->prepare("DELETE FROM autostelen_timers WHERE user_id = '$id'");
     $removestmt->execute();
-    $stmt = $pdo->prepare("INSERT INTO misdaad_timers (user_id, date) VALUES ('$id', '$timepressed')");
+    $stmt = $pdo->prepare("INSERT INTO autostelen_timers (user_id, date) VALUES ('$id', '$timepressed')");
     $stmt->execute();
-    $randomnumber = rand(1, 3);
-    $cashgeld = rand(25000, 50000);
-    $cashgeld = number_format($cashgeld, 0, ',', '.');
-    if ($randomnumber == 1) { 
-        $stmt = $pdo->prepare("UPDATE users SET cashgeld = cashgeld + $cashgeld WHERE gebruikersnaam = '$username'");
+    $successrate = rand(1, 5);
+    if ($successrate == 1) {
+        echo "
+        <script>
+        document.querySelector('.possible').style.display = 'none';
+        </script>";
+        $auto = rand(1,2);
+        $stmt = $pdo->prepare("INSERT INTO garage (user_id, auto_id) VALUES ('$id', '$auto')");
         $stmt->execute();
-        $options = array('Je hebt een winkel overvallen!', 'Je hebt een scooter gestolen!', 'Je hebt een auto gestolen!', 'Je hebt juwelen gestolen!', 'Je hebt een kunstwerk gestolen!', 'Je hebt een pinautomaat ge-ramkraakt!');
-        $x = rand(0, 5);
-        echo "" . $options[$x] . "<br /> Je hebt $cashgeld euro hiermee verdiend!\n";
+        
+        $stmt = $pdo->prepare("SELECT * FROM autos WHERE id = '$auto'");
+        $stmt->execute();
+        $rows = $stmt->fetchAll();
+        foreach ($rows as $row) {
+            echo "Je hebt een " . $model = $row['model'] . " gestolen, met een waarde van €" . number_format($row['waarde'], 0, ',', '.') . " euro!<br />";
+            echo "<img src='" . $row['img_url'] . "'width='500px'>";
+        }
         echo "
         <script>
             document.querySelector('form').style.display = 'none';
@@ -69,13 +77,13 @@ if (isset($submit)) {
         ";
         header("Refresh: 5");
     } else {
+        echo "Je hebt geen auto kunnen stelen, probeer het later opnieuw!";
         echo "
         <script>
             document.querySelector('form').style.display = 'none';
         </script>
         ";
-        echo "De misdaad is gefaald, probeer het later opnieuw!";
         header("Refresh: 5");
     }
 }
-?>
+

@@ -4,9 +4,6 @@ include "notLoggedIn.php";
 error_reporting(0);
 
 $username = $_SESSION['username'];
-$stmt = $pdo->prepare("SELECT id FROM users WHERE gebruikersnaam = '$username'");
-$stmt->execute();
-$row = $stmt->fetch();
 ?>
 
 <html>
@@ -28,6 +25,7 @@ $row = $stmt->fetch();
             </tr>
         </table>
     </form>
+    <p>Let op! Je hebt 100 kogels per 1% gezondheid nodig om iemand te vermoorden!</p>
 </html>
 
 <?php

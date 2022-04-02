@@ -16,12 +16,23 @@ $kogelprijs = 2500;
                 <td>Oneindig</td>
             </tr>
             <tr>
+                <td>Maximale aantal kogels</td>
+                <td>
+                    <?php 
+                    $stmt = $pdo->prepare("SELECT cashgeld FROM users WHERE gebruikersnaam = '$username'");
+                    $stmt->execute();
+                    $row = $stmt->fetch();
+                    $cash = $row['cashgeld'];
+                    $kogels = floor($cash / $kogelprijs);
+                    echo number_format($kogels, 0, ',', '.');
+                    ?>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     Kogelprijs
                 </td>
-                <td>
-                €<?php echo number_format($kogelprijs, 0, ',', '.'); ?> per kogel
-                </td>
+                <td>€<?php echo number_format($kogelprijs, 0, ',', '.'); ?> per kogel</td>
             </tr>
         </table>
         Koop <input type='number' name='amount'/>  kogels<br />
@@ -39,7 +50,7 @@ if (isset($submit)) {
     $cash = $row['cashgeld'];
     $cost = $amount * $kogelprijs;
     if ($cash < $cost) {
-        echo "Je hebt niet genoeg geld om dit te kopen!";
+        echo "Je hebt niet genoeg geld om zoveel kogels te kopen!";
     } else {
         $cash -= $cost;
         $stmt = $pdo->prepare("UPDATE users SET cashgeld = '$cash' WHERE gebruikersnaam = '$username'");
