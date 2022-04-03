@@ -53,14 +53,14 @@ if (isset($submit)) {
     $removestmt->execute();
     $stmt = $pdo->prepare("INSERT INTO autostelen_timers (user_id, date) VALUES ('$id', '$timepressed')");
     $stmt->execute();
-    $successrate = rand(1, 5);
+    $successrate = rand(1, 4);
     if ($successrate == 1) {
         echo "
         <script>
         document.querySelector('.possible').style.display = 'none';
         </script>";
 
-        $stmt = $pdo->prepare("SELECT * FROM autos WHERE gebruikersnaam = '$username'");
+        $stmt = $pdo->prepare("SELECT * FROM autos");
         $stmt->execute();
         $rowcount = $stmt->rowCount();
 
