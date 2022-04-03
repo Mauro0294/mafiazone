@@ -59,7 +59,12 @@ if (isset($submit)) {
         <script>
         document.querySelector('.possible').style.display = 'none';
         </script>";
-        $auto = rand(1,2);
+
+        $stmt = $pdo->prepare("SELECT * FROM autos WHERE gebruikersnaam = '$username'");
+        $stmt->execute();
+        $rowcount = $stmt->rowCount();
+
+        $auto = rand(1, $rowcount);
         $stmt = $pdo->prepare("INSERT INTO garage (user_id, auto_id) VALUES ('$id', '$auto')");
         $stmt->execute();
         

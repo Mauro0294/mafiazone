@@ -20,10 +20,6 @@ $currenttime = time();
 $verschil = $currenttime - $date;
 $wachttijd = 180;
 
-function echoDifference() {
-    echo "Je moet nog " . ($wachttijd - $verschil) . " seconden wachten!";
-}
-
 if ($verschil <= $wachttijd) {
     echo "Je kan geen misdaad plegen!<br />";
     echo "Je moet nog " . ($wachttijd - $verschil) . " seconden wachten!";
@@ -59,7 +55,7 @@ if (isset($submit)) {
     if ($randomnumber == 1) { 
         $stmt = $pdo->prepare("UPDATE users SET cashgeld = cashgeld + $cashgeld WHERE gebruikersnaam = '$username'");
         $stmt->execute();
-        $options = array('Je hebt een winkel overvallen!', 'Je hebt een scooter gestolen!', 'Je hebt een auto gestolen!', 'Je hebt juwelen gestolen!', 'Je hebt een kunstwerk gestolen!', 'Je hebt een pinautomaat ge-ramkraakt!');
+        $options = array('Je hebt een winkel overvallen!', 'Je hebt scooters gestolen!', 'Je hebt een paar elektrische fietsen gestolen!', 'Je hebt juwelen gestolen!', 'Je hebt een kunstwerk gestolen!', 'Je hebt een pinautomaat ge-ramkraakt!');
         $x = rand(0, 5);
         echo "" . $options[$x] . "<br /> Je hebt $cashgeld euro hiermee verdiend!\n";
         echo "

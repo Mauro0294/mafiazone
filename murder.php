@@ -25,7 +25,7 @@ $username = $_SESSION['username'];
             </tr>
         </table>
     </form>
-    <p>Let op! Je hebt 100 kogels per 1% gezondheid nodig om iemand te vermoorden!</p>
+    <p>Let op, je hebt 100 kogels per 1% gezondheid nodig om iemand te vermoorden!</p>
 </html>
 
 <?php
@@ -33,7 +33,6 @@ $submit = $_POST['submit'];
 $victim = $_POST['victim'];
 $bullets = $_POST['bullets'];
 if (isset($submit)) {
-    // Check if victim exists
     $stmt = $pdo->prepare("SELECT id FROM users WHERE gebruikersnaam = '$victim'");
     $stmt->execute();
     $row = $stmt->fetch();
@@ -57,7 +56,6 @@ if (isset($submit)) {
                     $stmt = $pdo->prepare("UPDATE users SET gezondheid = '$gezondheid' WHERE gebruikersnaam = '$victim'");
                     $stmt->execute();
                     if ($gezondheid <= 0) {
-                        // Haal kogels van de moordenaar eraf
                         $stmt = $pdo->prepare("SELECT kogels FROM users WHERE gebruikersnaam = '$username'");
                         $stmt->execute();
                         $row = $stmt->fetch();
@@ -88,7 +86,7 @@ if (isset($submit)) {
                             $stmt->execute();
                             echo "De slachtoffer is dood!";
                             echo "<br />";
-                            echo "Je hebt al het geld van " . $victim . " gekregen, dit is €" . $geld . "!";
+                            echo "Je hebt al het geld van " . $victim . " gekregen, dit is €" . number_format($geld, 0, ',', '.') . "!";
     
                             $stmt = $pdo->prepare("UPDATE users SET cashgeld = '0', bankgeld = '0' WHERE gebruikersnaam = '$victim'");
                             $stmt->execute();
