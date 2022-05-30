@@ -6,8 +6,8 @@ error_reporting(0);
 
 $username = $_SESSION['username'];
 
-$stmt = $pdo->prepare("SELECT * from users WHERE gebruikersnaam = '$username'");
-$stmt->execute();
+$stmt = $pdo->prepare("SELECT * from users WHERE gebruikersnaam = :username");
+$stmt->execute(['username' => $username]);
 $rows = $stmt->fetchAll();
 
 // Overzicht
