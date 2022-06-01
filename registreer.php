@@ -41,14 +41,16 @@ session_start();
     $wachtwoord = $_POST['wachtwoord'];
     $sql = "SELECT COUNT(gebruikersnaam) AS num FROM users WHERE gebruikersnaam = :gebruikersnaam";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':gebruikersnaam', $user);
-    $stmt->execute();
+    $stmt->execute(array(
+      ':gebruikersnaam' => $user
+    ));
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $sql1 = "SELECT COUNT(email) AS num FROM users WHERE email = :email";
     $stmt1 = $pdo->prepare($sql1);
-    $stmt1->bindValue(':email', $email);
-    $stmt1->execute();
+    $stmt1->execute(array(
+      ':email' => $email
+    ));
     $row1 = $stmt1->fetch(PDO::FETCH_ASSOC);
     $cashgeld = 0;
     $bankgeld = 0;
@@ -69,7 +71,7 @@ session_start();
         ":credits" => 0, ":moorden" => 0,
         ":gezondheid" => 100,
       ));
-      header("Location: login.php");
+    echo "<script>window.location.href = 'login.php'</script>";
     }
   }
 ?>
