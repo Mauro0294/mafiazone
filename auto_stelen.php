@@ -4,29 +4,25 @@ include "notLoggedIn.php";
 error_reporting(0);
 
 $username = $_SESSION['username'];
-$stmt = $pdo->prepare("SELECT id FROM users WHERE gebruikersnaam = '$username'");
-$stmt->execute();
+$stmt = $pdo->prepare("SELECT id FROM users WHERE gebruikersnaam = :username");
+$stmt->execute(['username' => $username]);
 $row = $stmt->fetch();
 
 $userid = $row['id'];
 
-$stmt2 = $pdo->prepare("SELECT * FROM autostelen_timers WHERE user_id = '$userid'");
-$stmt2->execute();
+$stmt2 = $pdo->prepare("SELECT * FROM autostelen_timers WHERE user_id = :userid");
+$stmt2->execute(['userid' => $userid]);
 $row2 = $stmt2->fetch();
 
 $date = $row2['date'];
 $currenttime = time();
 
 $verschil = $currenttime - $date;
-$wachttijd = 300;
-
-function echoDifference() {
-    echo "Je moet nog " . ($wachttijd - $verschil) . " seconden wachten!";
-}
+$wachttijd = 180;
 
 if ($verschil <= $wachttijd) {
-    echo "Je kan geen auto stelen!<br />";
-    echo "Je moet nog " . ($wachttijd - $verschil) . " seconden wachten!";
+    echo "Je kan nog geen auto stelen!<br />";
+    echo "<p class='difference'>Je moet nog " . ($wachttijd - $verschil) . " seconden wachten!</p>";
     } else {
     echo "<p class='possible'>Je kan een auto stelen!</p>";
     echo "
@@ -40,8 +36,8 @@ if ($verschil <= $wachttijd) {
 ?>
 
 <?php
-$stmt = $pdo->prepare("SELECT id FROM users where gebruikersnaam = '$username'");
-$stmt->execute();
+$stmt = $pdo->prepare("SELECT id FROM users WHERE gebruikersnaam = :username");
+$stmt->execute(['username' => $username]);
 $row = $stmt->fetch();
 
 $id = $row['id'];
@@ -49,10 +45,10 @@ $id = $row['id'];
 $submit = $_POST['submit'];
 if (isset($submit)) {
     $timepressed = time();
-    $removestmt = $pdo->prepare("DELETE FROM autostelen_timers WHERE user_id = '$id'");
-    $removestmt->execute();
-    $stmt = $pdo->prepare("INSERT INTO autostelen_timers (user_id, date) VALUES ('$id', '$timepressed')");
-    $stmt->execute();
+    $removestmt = $pdo->prepare("DELETE FROM autostelen_timers WHERE user_id = :id");
+    $removestmt->execute(['id' => $id]);
+    $stmt = $pdo->prepare("INSERT INTO autostelen_timers (user_id, date) VALUES (:id, :timepressed)");
+    $stmt->execute(['id' => $id, 'timepressed' => $timepressed]);
     $successrate = rand(1, 4);
     if ($successrate == 1) {
         echo "
@@ -65,11 +61,11 @@ if (isset($submit)) {
         $rowcount = $stmt->rowCount();
 
         $auto = rand(1, $rowcount);
-        $stmt = $pdo->prepare("INSERT INTO garage (user_id, auto_id) VALUES ('$id', '$auto')");
-        $stmt->execute();
+        $stmt = $pdo->prepare("INSERT INTO garage (user_id, auto_id) VALUES (:id, :auto)");
+        $stmt->execute(['id' => $id, 'auto' => $auto]);
         
-        $stmt = $pdo->prepare("SELECT * FROM autos WHERE id = '$auto'");
-        $stmt->execute();
+        $stmt = $pdo->prepare("SELECT * FROM autos WHERE id = :auto");
+        $stmt->execute(['auto' => $auto]);
         $rows = $stmt->fetchAll();
         foreach ($rows as $row) {
             echo "Je hebt een " . $model = $row['model'] . " gestolen, met een waarde van €" . number_format($row['waarde'], 0, ',', '.') . " euro!<br />";
@@ -91,4 +87,4 @@ if (isset($submit)) {
         header("Refresh: 5");
     }
 }
-
+?>

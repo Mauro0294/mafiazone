@@ -53,55 +53,52 @@ if (isset($submit)) {
                 if ($gezondheid > 0) {
                     echo "Niet genoeg kogels om het slachtoffer te vermoorden!";
                 } else {
-                    $stmt = $pdo->prepare("UPDATE users SET gezondheid = '$gezondheid' WHERE gebruikersnaam = '$victim'");
+                    $stmt = $pdo->prepare("SELECT kogels FROM users WHERE gebruikersnaam = '$username'");
                     $stmt->execute();
-                    if ($gezondheid <= 0) {
-                        $stmt = $pdo->prepare("SELECT kogels FROM users WHERE gebruikersnaam = '$username'");
+                    $row = $stmt->fetch();
+                    $kogels = $row['kogels'];
+                    if ($bullets > $kogels) {
+                        echo "Je hebt niet genoeg kogels om deze persoon te vermoorden!";
+                    } else {
+                        $stmt = $pdo->prepare("UPDATE users SET gezondheid = '$gezondheid' WHERE gebruikersnaam = '$victim'");
+                        $stmt->execute();
+                        $kogels -= $bullets;
+                        $stmt = $pdo->prepare("UPDATE users SET kogels = '$kogels' WHERE gebruikersnaam = '$username'");
+                        $stmt->execute();
+            
+                        $stmt = $pdo->prepare("UPDATE users SET gezondheid = '0' WHERE gebruikersnaam = '$victim'");
+                        $stmt->execute();
+                            
+                        $stmt = $pdo->prepare("SELECT cashgeld, bankgeld FROM users WHERE gebruikersnaam = '$victim'");
                         $stmt->execute();
                         $row = $stmt->fetch();
-                        $kogels = $row['kogels'];
-                        if ($bullets > $kogels) {
-                            echo "Je hebt niet genoeg kogels om deze persoon te vermoorden!";
-                        } else {
-                            $kogels -= $bullets;
-                            $stmt = $pdo->prepare("UPDATE users SET kogels = '$kogels' WHERE gebruikersnaam = '$username'");
-                            $stmt->execute();
-                    
-                            $stmt = $pdo->prepare("UPDATE users SET gezondheid = '0' WHERE gebruikersnaam = '$victim'");
-                            $stmt->execute();
-                            
-                            $stmt = $pdo->prepare("SELECT cashgeld, bankgeld FROM users WHERE gebruikersnaam = '$victim'");
-                            $stmt->execute();
-                            $row = $stmt->fetch();
-                            $cashgeld = $row['cashgeld'];
-                            $bankgeld = $row['bankgeld'];
-                            $geld = $cashgeld + $bankgeld;
+                        $cashgeld = $row['cashgeld'];
+                        $bankgeld = $row['bankgeld'];
+                        $geld = $cashgeld + $bankgeld;
     
-                            $stmt = $pdo->prepare("SELECT cashgeld FROM users WHERE gebruikersnaam = '$username'");
-                            $stmt->execute();
-                            $row = $stmt->fetch();
-                            $cashgeld = $row['cashgeld'];
-                            $cashgeld += $geld;
-                            $stmt = $pdo->prepare("UPDATE users SET cashgeld = '$cashgeld' WHERE gebruikersnaam = '$username'");
-                            $stmt->execute();
-                            echo "De slachtoffer is dood!";
-                            echo "<br />";
-                            echo "Je hebt al het geld van " . $victim . " gekregen, dit is €" . number_format($geld, 0, ',', '.') . "!";
-    
-                            $stmt = $pdo->prepare("UPDATE users SET cashgeld = '0', bankgeld = '0' WHERE gebruikersnaam = '$victim'");
-                            $stmt->execute();
+                        $stmt = $pdo->prepare("SELECT cashgeld FROM users WHERE gebruikersnaam = '$username'");
+                        $stmt->execute();
+                        $row = $stmt->fetch();
+                        $cashgeld = $row['cashgeld'];
+                        $cashgeld += $geld;
+                        $stmt = $pdo->prepare("UPDATE users SET cashgeld = '$cashgeld' WHERE gebruikersnaam = '$username'");
+                        $stmt->execute();                            echo "Het slachtoffer is dood!";
+                        echo "<br />";
+                        echo "Je hebt al het geld van " . $victim . " gekregen, dit is €" . number_format($geld, 0, ',', '.') . "!";
+
+                        $stmt = $pdo->prepare("UPDATE users SET cashgeld = '0', bankgeld = '0' WHERE gebruikersnaam = '$victim'");
+                        $stmt->execute();
                             
-                            $stmt = $pdo->prepare("SELECT moorden FROM users WHERE gebruikersnaam = '$username'");
-                            $stmt->execute();
-                            $row = $stmt->fetch();
-                            $moorden = $row['moorden'];
-                            $moorden += 1;
-                            $stmt = $pdo->prepare("UPDATE users SET moorden = '$moorden' WHERE gebruikersnaam = '$username'");
-                            $stmt->execute();
-                        }
-            }
+                        $stmt = $pdo->prepare("SELECT moorden FROM users WHERE gebruikersnaam = '$username'");
+                        $stmt->execute();
+                        $row = $stmt->fetch();
+                        $moorden = $row['moorden'];
+                        $moorden += 1;
+                        $stmt = $pdo->prepare("UPDATE users SET moorden = '$moorden' WHERE gebruikersnaam = '$username'");
+                        $stmt->execute();
+                    }
                 }
-        }
+            }
         }
     }
 }
