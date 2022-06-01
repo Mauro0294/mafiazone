@@ -22,6 +22,7 @@ session_start();
         </ul>
     <section class="form">
         <form method="POST">
+        <h2 class='formheader'>Registreer</h2>
             <label for='gebruikersnaam'>Gebruikersnaam</label><br />
             <input type="text" name='gebruikersnaam' placeholder="Gebruikersnaam"/><br />
             <label for='gebruikersnaam'>Email</label><br />

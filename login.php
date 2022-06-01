@@ -22,6 +22,7 @@ session_start();
         </ul>
     <section class="form">
         <form method="POST">
+        <h2 class='formheader'>Inloggen</h2>
             <label for='gebruikersnaam'>Gebruikersnaam</label><br />
             <input type="text" name='gebruikersnaam' placeholder="Gebruikersnaam"/><br />
             <label for='gebruikersnaam'>Wachtwoord</label><br />
@@ -48,7 +49,7 @@ if (isset($_POST['submit'])) {
             echo "<script type='text/javascript'>alert('Je bent succesvol ingelogd!');</script>";
             $username = $row['gebruikersnaam'];
             $_SESSION['username'] = $username;
-            header('Location: status.php');
+            echo "<script>window.location.href = 'status.php'</script>";
         } else {
             echo "<script type='text/javascript'>alert('Verkeerd gebruikersnaam en/of wachtwoord!');</script>";
         }
