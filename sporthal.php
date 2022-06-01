@@ -67,11 +67,10 @@ if (isset($submit)) {
                 $row = $stmt->fetch();
                 $power = $row['power'];
                 $random = rand(500, 2000);
-                $random = number_format($random, 0, ',', '.');
                 $power += $random;
                 $stmt = $pdo->prepare("UPDATE users SET power = " . $power . " WHERE gebruikersnaam = '$username'");
                 $stmt->execute();
-                echo "Je hebt gebasketbal gespeeld, je kreeg hiervoor " . $random . " power, je power is nu " . number_format($power, 0, ',', '.') . ".";
+                echo "Je hebt gebasketbal gespeeld, je kreeg hiervoor " . number_format($random, 0, ',', '.') . " power, je power is nu " . number_format($power, 0, ',', '.') . ".";
                 echo "
                 <script>
                     document.querySelector('form').style.display = 'none';
@@ -85,11 +84,10 @@ if (isset($submit)) {
                 $row = $stmt->fetch();
                 $power = $row['power'];
                 $random = rand(500, 2000);
-                $random = number_format($random, 0, ',', '.');
                 $power += $random;
                 $stmt = $pdo->prepare("UPDATE users SET power = " . $power . " WHERE gebruikersnaam = '$username'");
                 $stmt->execute();
-                echo "Je hebt rugby gespeeld, je kreeg hiervoor " . $random . " power, je power is nu " . number_format($power, 0, ',', '.') . ".";
+                echo "Je hebt rugby gespeeld, je kreeg hiervoor " . number_format($random, 0, ',', '.') . " power, je power is nu " . number_format($power, 0, ',', '.') . ".";
                 echo "
                 <script>
                     document.querySelector('form').style.display = 'none';
@@ -103,11 +101,10 @@ if (isset($submit)) {
                 $row = $stmt->fetch();
                 $power = $row['power'];
                 $random = rand(500, 2000);
-                $random = number_format($random, 0, ',', '.');
                 $power += $random;
                 $stmt = $pdo->prepare("UPDATE users SET power = " . $power . " WHERE gebruikersnaam = '$username'");
                 $stmt->execute();
-                echo "Je hebt voetbal gespeeld, je kreeg hiervoor " . $random . " power, je power is nu " . number_format($power, 0, ',', '.') . ".";
+                echo "Je hebt voetbal gespeeld, je kreeg hiervoor " . number_format($random, 0, ',', '.') . " power, je power is nu " . number_format($power, 0, ',', '.') . ".";
                 echo "
                 <script>
                     document.querySelector('form').style.display = 'none';
@@ -121,11 +118,10 @@ if (isset($submit)) {
                 $row = $stmt->fetch();
                 $power = $row['power'];
                 $random = rand(500, 2000);
-                $random = number_format($random, 0, ',', '.');
                 $power += $random;
                 $stmt = $pdo->prepare("UPDATE users SET power = " . $power . " WHERE gebruikersnaam = '$username'");
                 $stmt->execute();
-                echo "Je hebt tennis gespeeld, je kreeg hiervoor " . $random . " power, je power is nu " . number_format($power, 0, ',', '.') . ".";
+                echo "Je hebt tennis gespeeld, je kreeg hiervoor " . number_format($random, 0, ',', '.') . " power, je power is nu " . number_format($power, 0, ',', '.') . ".";
                 echo "
                 <script>
                     document.querySelector('form').style.display = 'none';

@@ -18,13 +18,13 @@ $date = $row2['date'];
 $currenttime = time();
 
 $verschil = $currenttime - $date;
-$wachttijd = 180;
+$wachttijd = 90;
 
 if ($verschil <= $wachttijd) {
-    echo "Je kan geen misdaad plegen!<br />";
+    echo "Je kan nog geen misdaad plegen!<br />";
     echo "Je moet nog " . ($wachttijd - $verschil) . " seconden wachten!";
     } else {
-    echo "Je kan een misdaad plegen!";
+    echo "<p class='possible'>Je kan een misdaad plegen!</p>";
     echo "
     <html>
     <form method='POST'>
@@ -61,6 +61,7 @@ if (isset($submit)) {
         echo "
         <script>
             document.querySelector('form').style.display = 'none';
+            document.querySelector('.possible').style.display = 'none';
         </script>
         ";
         header("Refresh: 5");
@@ -68,6 +69,7 @@ if (isset($submit)) {
         echo "
         <script>
             document.querySelector('form').style.display = 'none';
+            document.querySelector('.possible').style.display = 'none';
         </script>
         ";
         echo "De misdaad is gefaald, probeer het later opnieuw!";
