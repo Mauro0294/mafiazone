@@ -51,12 +51,12 @@ if (isset($submit)) {
     $stmt->execute();
     $randomnumber = rand(1, 3);
     $cashgeld = rand(25000, 50000);
-    $cashgeld = number_format($cashgeld, 0, ',', '.');
     if ($randomnumber == 1) { 
         $stmt = $pdo->prepare("UPDATE users SET cashgeld = cashgeld + $cashgeld WHERE gebruikersnaam = '$username'");
         $stmt->execute();
         $options = array('Je hebt een winkel overvallen!', 'Je hebt scooters gestolen!', 'Je hebt een paar elektrische fietsen gestolen!', 'Je hebt juwelen gestolen!', 'Je hebt een kunstwerk gestolen!', 'Je hebt een pinautomaat ge-ramkraakt!');
         $x = rand(0, 5);
+        $cashgeld = number_format($cashgeld, 0, ',', '.');
         echo "" . $options[$x] . "<br /> Je hebt $cashgeld euro hiermee verdiend!\n";
         echo "
         <script>
