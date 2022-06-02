@@ -1,105 +1,104 @@
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background: #0E0500;
-    font-family: Arial;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #0e0500;
+  font-family: Arial;
+  overflow: hidden;
 }
 
 .banner {
-    width: 100vw;
-    height: 55%;
-    position: relative;
-    margin-top: -15rem;
-    max-width: 100%;
+  width: 100vw;
+  height: 55%;
+  position: relative;
+  margin-top: -15rem;
+  max-width: 100%;
 }
 
-
 ul {
-    display: flex;
-    background: black;
-    color: white;
-    height: 7.5rem;
-    font-size: 2rem;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 0;
+  display: flex;
+  background: black;
+  color: white;
+  height: 7.5rem;
+  font-size: 2rem;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 0;
 }
 
 div {
-    display: flex;
-    gap: 10rem;
+  display: flex;
+  gap: 10rem;
 }
 
 li {
-    list-style-type: none;
-    transition: 0.5s;
+  list-style-type: none;
+  transition: 0.5s;
 }
 
 .current {
-    color: grey;
+  color: grey;
 }
 
 li:hover {
-    color: grey;
-    cursor: pointer;
+  color: grey;
+  cursor: pointer;
 }
 
 .border-button {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 1.25rem;
-    transition: 0.5s;
-    background: none;
-    cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.25rem;
+  transition: 0.5s;
+  background: none;
+  cursor: pointer;
 }
 
 .border-button:hover {
-    border: 1px solid rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 1);
 }
 
 .form {
-    display: flex;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 input {
-    margin-top: 2rem;
-    background: #3F3F43;
-    outline: none;
-    border: none;
-    color: white;
-    padding: 1rem;
-    margin-bottom: 2rem
+  margin-top: 2rem;
+  background: #3f3f43;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 1rem;
+  margin-bottom: 2rem;
 }
 
 .a {
-    text-decoration: none;
-    color: white;
-    transition: 0.5s;
+  text-decoration: none;
+  color: white;
+  transition: 0.5s;
 }
 
 .a:hover {
-    color: grey;
+  color: grey;
 }
 
 .current {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 label {
-    color: white;
-    font-size: 1.6rem;
+  color: white;
+  font-size: 1.6rem;
 }
 
 .formheader {
-    color: white;
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    margin-top: 0;
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
 }

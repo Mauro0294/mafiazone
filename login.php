@@ -44,20 +44,19 @@ if (isset($_POST['submit'])) {
         $stmt->bindParam('wachtwoord', $wachtwoord, PDO::PARAM_STR);
         $stmt->execute();
         $count = $stmt->rowCount();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($count == 1 && !empty($row)) {
-            switch (true) {
-                case $row['banned'] == 'true':
-                    header("Location: banned/banned.html");
-                    break;
-                default:
-                    echo "<script type='text/javascript'>alert('Je bent succesvol ingelogd!');</script>";
+        $rows = $stmt->fetchAll();
+        foreach ($rows as $row) {
+            if ($count == 1 && !empty($row)) {
+                if ($row['banned'] === 'true') {
+                    echo "<script>window.location.href = 'banned/banned.html'</script>";
+                } else {
                     $username = $row['gebruikersnaam'];
                     $_SESSION['username'] = $username;
                     echo "<script>window.location.href = 'status.php'</script>";
+                }
+            } else {
+                echo "<script type='text/javascript'>alert('Verkeerd gebruikersnaam en/of wachtwoord!');</script>";
             }
-        } else {
-            echo "<script type='text/javascript'>alert('Verkeerd gebruikersnaam en/of wachtwoord!');</script>";
         }
     }
 }
