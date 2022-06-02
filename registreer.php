@@ -24,11 +24,11 @@ session_start();
         <form method="POST">
         <h2 class='formheader'>Registreer</h2>
             <label for='gebruikersnaam'>Gebruikersnaam</label><br />
-            <input type="text" name='gebruikersnaam' placeholder="Gebruikersnaam"/><br />
+            <input type="text" name='gebruikersnaam' required placeholder="Gebruikersnaam"/><br />
             <label for='gebruikersnaam'>Email</label><br />
-            <input type="email" name='email' placeholder="Email"/><br />
+            <input type="email" name='email' required placeholder="Email"/><br />
             <label for='gebruikersnaam'>Wachtwoord</label><br />
-            <input type="password" name='wachtwoord' placeholder="Wachtwoord"/><br />
+            <input type="password" required name='wachtwoord' placeholder="Wachtwoord"/><br />
             <input type="submit" name='submit' class='border-button' value='Aanmelden'/>
         </form>
     </section>
