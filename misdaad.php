@@ -77,7 +77,7 @@ if (isset($submit)) {
             document.querySelector('.possible').style.display = 'none';
         </script>
         ";
-        header("Refresh: 5");
+        echo "<script> setTimeout(function() { window.location = 'misdaad.php'; }, 5000);</script>";
     } else {
         echo "
         <script>
@@ -86,7 +86,7 @@ if (isset($submit)) {
         </script>
         ";
         echo "De misdaad is gefaald, probeer het later opnieuw!";
-        header("Refresh: 5");
+        echo "<script> setTimeout(function() { window.location = 'misdaad.php'; }, 5000);</script>";
     }
 }
 ?>

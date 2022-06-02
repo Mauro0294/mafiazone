@@ -89,7 +89,7 @@ if (isset($submit)) {
             document.querySelector('form').style.display = 'none';
         </script>
         ";
-        header("Refresh: 5");
+        echo "<script> setTimeout(function() { window.location = 'auto_stelen.php'; }, 5000);</script>";
     } else {
         echo "Je hebt geen auto kunnen stelen, probeer het later opnieuw!";
         echo "
@@ -97,7 +97,7 @@ if (isset($submit)) {
             document.querySelector('form').style.display = 'none';
         </script>
         ";
-        header("Refresh: 5");
+        echo "<script> setTimeout(function() { window.location = 'auto_stelen.php'; }, 5000);</script>";
     }
 }
 ?>
