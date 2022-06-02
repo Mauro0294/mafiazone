@@ -7,11 +7,16 @@ CREATE TABLE autos (
 );
 
 INSERT INTO autos (id, model, img_url, waarde) VALUES
-(1, 'Audi TT', 'https://www.autoscout24.nl/assets/auto/images/model/audi/audi-tt/audi-tt-l-02.jpg', 30000),
-(2, 'Volkswagen Golf GTI', 'https://media.autoweek.nl/m/bkfydb0bmpbp_800.jpg', 45000),
-(3, 'Lamborghini Aventador', 'https://www.autoblog.nl/files/2021/07/lamborghini-aventador-ultimae-2021-970-023.jpg', 450000),
-(4, 'Range Rover Evoque', 'https://media.autoweek.nl/m/5p7yd2vb64bb_800.jpg', 50000),
-(5, 'BMW M5', 'https://www.hartvoorautos.nl/wp-content/uploads/2020/06/2021-BMW-M5-Competition-1.jpg', 150000);
+('Audi TT', 'https://www.autoscout24.nl/assets/auto/images/model/audi/audi-tt/audi-tt-l-02.jpg', 30000),
+('Volkswagen Golf GTI', 'https://media.autoweek.nl/m/bkfydb0bmpbp_800.jpg', 45000),
+('Lamborghini Aventador', 'https://www.autoblog.nl/files/2021/07/lamborghini-aventador-ultimae-2021-970-023.jpg', 450000),
+('Range Rover Evoque', 'https://media.autoweek.nl/m/5p7yd2vb64bb_800.jpg', 50000),
+('BMW M5', 'https://www.hartvoorautos.nl/wp-content/uploads/2020/06/2021-BMW-M5-Competition-1.jpg', 150000);
+('Fiat 500', 'https://images.ctfassets.net/tmk3oi6u1mmf/61LGbQn55IEhfLcg29Rh6B/4fed5dfd6dc0d68d3494d7132370c779/ATX_M671_F5.jpg?fm=webp&w=648', 20000),
+('Mercedes-Benz CL 500', 'https://www.autoscout24.nl/assets/auto/images/model/mercedes-benz/mercedes-benz-cl-500/mercedes-benz-cl-500-l-01.jpg', 25000),
+('Toyota GR Supra', 'https://media.autoweek.nl/m/db3y4x0bw3mu_800.jpg', 70000),
+('Rolls Royce Phantom', 'https://alle-autos.nl/uploads/2019/02/Rolls-Royce%20Phantom%201.jpg', 550000),
+('Renault Megane', 'https://media.autoweek.nl/m/8tgyeyobnkpc_800.jpg', 25000)
 
 CREATE TABLE autostelen_timers (
   user_id int,
