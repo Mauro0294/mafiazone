@@ -57,6 +57,8 @@ CREATE TABLE users (
   credits int(11),
   moorden int(11),
   gezondheid int(11),
+  banned varchar(255),
+  admin varchar(255),
   PRIMARY KEY (id)
 );
 
