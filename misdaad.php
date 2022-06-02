@@ -19,10 +19,11 @@ $currenttime = time();
 
 $verschil = $currenttime - $date;
 $wachttijd = 90;
+$wait_time = $wachttijd - $verschil;
 
 if ($verschil <= $wachttijd) {
     echo "Je kan nog geen misdaad plegen!<br />";
-    echo "Je moet nog " . ($wachttijd - $verschil) . " seconden wachten!";
+    echo "<span>Je moet nog <span class='time'>" . $wait_time . "</span> seconden wachten!</span>";
     } else {
     echo "<p class='possible'>Je kan een misdaad plegen!</p>";
     echo "
@@ -36,6 +37,18 @@ if ($verschil <= $wachttijd) {
 ?>
 
 <?php
+echo "
+<script>
+let time = document.querySelector('.time').innerText;
+
+setInterval(function(){
+    document.querySelector('.time').innerText = time;
+     time--;
+     if (time < 0) {
+         window.location.href = 'misdaad.php';
+     }
+   }, 1000)
+</script>";
 $stmt = $pdo->prepare("SELECT id FROM users where gebruikersnaam = '$username'");
 $stmt->execute();
 $row = $stmt->fetch();
