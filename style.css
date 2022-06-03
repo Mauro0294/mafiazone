@@ -1,104 +1,97 @@
-html {
-  font-size: 62.5%;
-}
-
 body {
   margin: 0;
   padding: 0;
-  background: #0e0500;
-  font-family: Arial;
-  overflow: hidden;
+  font-family: sans-serif;
+  background-image: url("/images/mafia2.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.banner {
+.container {
+  height: 100vh;
   width: 100vw;
-  height: 55%;
-  position: relative;
-  margin-top: -15rem;
-  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-ul {
-  display: flex;
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+}
+
+.box {
+  width: 320px;
+  height: auto;
   background: black;
   color: white;
-  height: 7.5rem;
-  font-size: 2rem;
-  justify-content: space-around;
+  position: relative;
+  box-sizing: border-box;
+  padding: 70px 30px 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-top: 0;
-}
-
-div {
-  display: flex;
-  gap: 10rem;
-}
-
-li {
-  list-style-type: none;
-  transition: 0.5s;
-}
-
-.current {
-  color: grey;
-}
-
-li:hover {
-  color: grey;
-  cursor: pointer;
-}
-
-.border-button {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 1.25rem;
-  transition: 0.5s;
-  background: none;
-  cursor: pointer;
-}
-
-.border-button:hover {
-  border: 1px solid rgba(255, 255, 255, 1);
-}
-
-.form {
-  display: flex;
-  justify-content: center;
-  text-align: center;
 }
 
 input {
-  margin-top: 2rem;
-  background: #3f3f43;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  width: 100%;
+  background: none;
   outline: none;
   border: none;
+  border-bottom: 1px solid grey;
   color: white;
-  padding: 1rem;
-  margin-bottom: 2rem;
+  font-size: 14px;
+  line-height: 45px;
 }
 
-.a {
-  text-decoration: none;
-  color: white;
-  transition: 0.5s;
-}
-
-.a:hover {
-  color: grey;
-}
-
-.current {
-  text-decoration: none;
-  color: white;
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 label {
-  color: white;
-  font-size: 1.6rem;
+  font-weight: bold;
 }
 
-.formheader {
+input[type="submit"] {
+  background: #ff3a27;
   color: white;
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  margin-top: 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  font-weight: bold;
+  display: block;
+  margin: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-bottom: 30px;
+}
+
+a {
+  margin-left: 0;
+  color: grey;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+input[type="submit"]:hover {
+  background: tomato;
+}
+a:hover {
+  color: tomato;
 }

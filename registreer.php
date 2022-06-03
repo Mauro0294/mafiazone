@@ -9,29 +9,36 @@ session_start();
     <title></title>
 </head>
 <body>
-    <img class="banner" src="images/banner.png"/>
-        <ul>
-            <div>
-            <li><a href='index.php' class='a'>Home</a></li>
-            <li><a href='login.php' class='a'>Inloggen</a></li>
-            <li><a href='contact.php' class='a'>Contact</a></li>
-            </div>
-            <div>
-            <li class="border-button"><a href='registreer.php' class='current'>Aanmelden</a></li>
-            </div>
-        </ul>
-    <section class="form">
-        <form method="POST">
-        <h2 class='formheader'>Registreer</h2>
-            <label for='gebruikersnaam'>Gebruikersnaam</label><br />
-            <input type="text" name='gebruikersnaam' required placeholder="Gebruikersnaam"/><br />
-            <label for='gebruikersnaam'>Email</label><br />
-            <input type="email" name='email' required placeholder="Email"/><br />
-            <label for='gebruikersnaam'>Wachtwoord</label><br />
-            <input type="password" required name='wachtwoord' placeholder="Wachtwoord"/><br />
-            <input type="submit" name='submit' class='border-button' value='Aanmelden'/>
+<div class="container">
+    <div class="box">
+        <img src="/images/avatar.png" />
+        <h2>Registreren</h2>
+        <form method='POST'>
+            <label for="username">Gebruikersnaam</label>
+            <input
+            type="text"
+            placeholder="Voer je gebruikersnaam in"
+            name="gebruikersnaam"
+            required
+            />
+            <label for="email">Email</label>
+            <input
+            type="email"
+            placeholder="Voer je e-mail in"
+            name="email"
+            required
+            />
+            <label for="password">Wachtwoord</label>
+            <input
+            type="password"
+            placeholder="Voer je wachtwoord in"
+            name="wachtwoord"
+            required
+            />
+            <input type="submit" name='submit' value="Registreren" />
         </form>
-    </section>
+    </div>
+</div>
 </body>
 </html>
 
