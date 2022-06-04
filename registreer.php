@@ -36,6 +36,7 @@ session_start();
             required
             />
             <input type="submit" name='submit' value="Registreren" />
+            <span><a href="login.php">Heb je al een account?</a></span>
         </form>
     </div>
 </div>

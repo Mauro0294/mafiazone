@@ -1,12 +1,11 @@
 <?php
 include "notLoggedIn.php";
 
-error_reporting(0);
-
 $username = $_SESSION['username'];
 
-$stmt = $pdo->prepare("SELECT * from users WHERE gebruikersnaam = '$username'");
-$stmt->execute();
+$stmt = $pdo->prepare("SELECT * from users WHERE gebruikersnaam = :username");
+$stmt->execute(
+    ['username' => $username]);
 $rows = $stmt->fetchAll();
 
 // Overzicht
@@ -45,9 +44,9 @@ if (isset($submit)) {
                     if ($bedrag <= $cash) {
                         $cash -= $bedrag;
                         $bank += $bedrag;
-                        $stmt1 = $pdo->prepare("UPDATE users SET cashgeld = " . $cash . " WHERE gebruikersnaam = 'Mauro'");
-                        $stmt2 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . " WHERE gebruikersnaam = 'Mauro'");
-                        $stmt1->execute() && $stmt2->execute();
+                        $stmt1 = $pdo->prepare("UPDATE users SET cashgeld = " . $cash . " WHERE gebruikersnaam = :username");
+                        $stmt2 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . " WHERE gebruikersnaam = :username");
+                        $stmt1->execute(['username' => $username]) && $stmt2->execute(['username' => $username]);
                         header("Refresh: 0"); 
                     }
                     return;
@@ -57,9 +56,9 @@ if (isset($submit)) {
                     if ($bedrag <= $bank) {
                         $cash += $bedrag;
                         $bank -= $bedrag;
-                        $stmt1 = $pdo->prepare("UPDATE users SET cashgeld = " . $cash . " WHERE gebruikersnaam = 'Mauro'");
-                        $stmt2 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . " WHERE gebruikersnaam = 'Mauro'");
-                        $stmt1->execute() && $stmt2->execute();
+                        $stmt1 = $pdo->prepare("UPDATE users SET cashgeld = " . $cash . " WHERE gebruikersnaam = :username");
+                        $stmt2 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . " WHERE gebruikersnaam = :username");
+                        $stmt1->execute(['username' => $username]) && $stmt2->execute(['username' => $username]);
                         header("Refresh: 0");
                     }
                     return;
