@@ -18,7 +18,12 @@ $date = $row2['date'];
 $currenttime = time();
 
 $verschil = $currenttime - $date;
-$wachttijd = 90;
+
+$wachttijdstmt = $pdo->prepare("SELECT * FROM cooldowns WHERE event = 'misdaad'");
+$wachttijdstmt->execute();
+$wachttijdfetch = $wachttijdstmt->fetch();
+$wachttijd = $wachttijdfetch['time'];
+
 $wait_time = $wachttijd - $verschil;
 
 if ($verschil <= $wachttijd) {

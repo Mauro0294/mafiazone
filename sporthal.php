@@ -19,7 +19,11 @@ $date = $row2['date'];
 $currenttime = time();
 
 $verschil = $currenttime - $date;
-$wachttijd = 600;
+
+$wachttijdstmt = $pdo->prepare("SELECT * FROM cooldowns WHERE event = 'sporthal'");
+$wachttijdstmt->execute();
+$wachttijdfetch = $wachttijdstmt->fetch();
+$wachttijd = $wachttijdfetch['time'];
 
 if ($verschil <= $wachttijd) {
     echo "

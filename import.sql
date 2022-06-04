@@ -62,6 +62,18 @@ CREATE TABLE users (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE cooldowns (
+	id int(11) AUTO_INCREMENT,
+  event varchar(255),
+  time int(11),
+  PRIMARY KEY (id)
+);
+
+INSERT INTO cooldowns (event, time) VALUES
+('misdaad', 90),
+('auto_stelen', 180),
+('sporthal', 600);
+
 ALTER TABLE garage
   ADD CONSTRAINT `garage_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `garage_ibfk_2` FOREIGN KEY (`auto_id`) REFERENCES `autos` (`id`);
