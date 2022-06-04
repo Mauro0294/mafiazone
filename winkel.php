@@ -63,10 +63,10 @@ foreach ($rows as $row) {
                 echo "Gekocht!";
                 $cash -= $prijs * $amount;
                 $spelerpower += $power * $amount;
-                $stmt1 = $pdo->prepare("UPDATE users SET cashgeld = $cash WHERE gebruikersnaam = 'Mauro'");
-                $stmt2 = $pdo->prepare("UPDATE users SET power = $spelerpower WHERE gebruikersnaam = 'Mauro'");
-                $stmt1->execute();
-                $stmt2->execute();
+                $stmt1 = $pdo->prepare("UPDATE users SET cashgeld = $cash WHERE gebruikersnaam = :username");
+                $stmt2 = $pdo->prepare("UPDATE users SET power = $spelerpower WHERE gebruikersnaam = :username");
+                $stmt1->execute(['username' => $username]);
+                $stmt2->execute(['username' => $username]);
                 header("Refresh: 0");
             } else {
                 echo "Voer een getal in boven de 0";
