@@ -11,7 +11,7 @@ $stmt->execute(array(
 ));
 $rows = $stmt->fetchAll();
 foreach ($rows as $row) {
-    if ($row['banned'] === 'true') {
+    if ($row['banned'] == 'true') {
         echo "<script>window.location.href = 'banned/banned.html'</script>";
     }
 }

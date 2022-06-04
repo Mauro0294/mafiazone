@@ -21,6 +21,7 @@ include '../verbinding.php';
                 <input type="text" name="waarde" placeholder="Voer de waarde in">
                 <input type='submit' name='submit' value='Toevoegen'>
             </form>
+            </div>
         </div>
     </body
 </html>

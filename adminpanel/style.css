@@ -7,9 +7,15 @@ body {
   background-size: cover;
 }
 
+.container {
+  display: flex;
+  padding: 50px 0;
+}
+
 .box {
   width: 320px;
   height: auto;
+  max-height: 450px;
   background: black;
   color: white;
   position: relative;
@@ -17,10 +23,25 @@ body {
   padding: 70px 30px 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.box2 {
+  width: 400px;
+  height: auto;
+  max-height: 450px;
+  background: black;
+  color: white;
+  position: relative;
+  box-sizing: border-box;
+  padding: 70px 30px 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  border-left: 1px solid #ff3a27;
 }
 
 input {
@@ -72,4 +93,46 @@ img {
   border-radius: 50%;
   position: absolute;
   top: -50px;
+}
+
+p {
+  margin: 0;
+}
+
+table {
+  color: white;
+  width: 80%;
+}
+
+.boxwrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+input[type="number"] {
+  margin: 0;
+  padding: 0;
+}
+
+.box2 input[type="submit"] {
+  margin-top: 10px;
+}
+
+.playerbox {
+  width: 320px;
+  height: auto;
+  max-height: 450px;
+  background: black;
+  color: white;
+  position: relative;
+  box-sizing: border-box;
+  padding: 70px 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

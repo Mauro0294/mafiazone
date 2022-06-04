@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
         $rows = $stmt->fetchAll();
         foreach ($rows as $row) {
             if ($count == 1 && !empty($row)) {
-                if ($row['banned'] === 'true') {
+                if ($row['banned'] == 'true') {
                     echo "<script>window.location.href = 'banned/banned.html'</script>";
                 } else {
                     $username = $row['gebruikersnaam'];

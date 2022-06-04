@@ -1,8 +1,6 @@
 <?php
 include "notLoggedIn.php";
 
-
-
 $username = $_SESSION['username'];
 $stmt = $pdo->prepare("SELECT id FROM users WHERE gebruikersnaam = '$username'");
 $stmt->execute();
@@ -25,12 +23,14 @@ $wachttijdstmt->execute();
 $wachttijdfetch = $wachttijdstmt->fetch();
 $wachttijd = $wachttijdfetch['time'];
 
+$wait_time = $wachttijd - $verschil;
+
 if ($verschil <= $wachttijd) {
     echo "
     <script>
     document.querySelector('form').style.display = 'none';
     </script>";
-    echo "Je kan nog niet sporten, je moet nog " . ($wachttijd - $verschil) . " seconden wachten!";
+    echo "<span>Je moet nog <span class='time'>" . $wait_time . "</span> seconden wachten!</span>";
 } else {
     echo "
     <h2>Sporthal</h2>
@@ -55,6 +55,18 @@ if ($verschil <= $wachttijd) {
 ?>
 
 <?php
+echo "
+<script>
+let time = document.querySelector('.time').innerText;
+
+setInterval(function(){
+    document.querySelector('.time').innerText = time;
+    time--;
+    if (time < 0) {
+        window.location.href = 'sporthal.php';
+    }
+}, 1000)
+</script>";
 $submit = $_POST['submit'];
 $keuze = $_POST['keuze'];
 

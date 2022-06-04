@@ -82,7 +82,8 @@ if (isset($submit)) {
                         $cashgeld = $row['cashgeld'];
                         $cashgeld += $geld;
                         $stmt = $pdo->prepare("UPDATE users SET cashgeld = '$cashgeld' WHERE gebruikersnaam = '$username'");
-                        $stmt->execute();                            echo "Het slachtoffer is dood!";
+                        $stmt->execute();
+                        echo "Het slachtoffer is dood!";
                         echo "<br />";
                         echo "Je hebt al het geld van " . $victim . " gekregen, dit is €" . number_format($geld, 0, ',', '.') . "!";
 

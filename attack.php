@@ -1,8 +1,6 @@
 <?php
 include "notLoggedIn.php";
 
-
-
 $username = $_SESSION['username'];
 ?>
 
