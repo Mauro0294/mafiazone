@@ -71,7 +71,7 @@ if (isset($submit)) {
         $stmt = $pdo->prepare("UPDATE users SET cashgeld = cashgeld + $cashgeld WHERE gebruikersnaam = '$username'");
         $stmt->execute();
         $options = array('Je hebt een winkel overvallen!', 'Je hebt scooters gestolen!', 'Je hebt een paar elektrische fietsen gestolen!', 'Je hebt juwelen gestolen!', 'Je hebt een kunstwerk gestolen!', 'Je hebt een pinautomaat ge-ramkraakt!');
-        $x = rand(0, 5);
+        $x = rand(0, count($options));
         $cashgeld = number_format($cashgeld, 0, ',', '.');
         echo "" . $options[$x] . "<br /> Je hebt $cashgeld euro hiermee verdiend!\n";
         echo "
