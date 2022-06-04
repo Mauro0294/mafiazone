@@ -1,7 +1,7 @@
 <?php
 include "notLoggedIn.php";
 
-error_reporting(0);
+
 
 $username = $_SESSION['username'];
 $stmt = $pdo->prepare("SELECT id FROM users WHERE gebruikersnaam = '$username'");

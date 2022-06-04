@@ -1,5 +1,5 @@
 <?php
-include "admin_check.php";
+include "../admin_check.php";
 ?>
 
 <html>

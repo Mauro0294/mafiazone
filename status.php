@@ -3,7 +3,7 @@
 include "notLoggedIn.php";
 include "chatbox.php";
 
-error_reporting(0);
+
 
 $username = $_SESSION['username'];
 

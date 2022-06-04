@@ -1,7 +1,7 @@
 <?php
 include "notLoggedIn.php";
 
-error_reporting(0);
+
 
 $username = $_SESSION['username'];
 $kogelprijs = 2500;
