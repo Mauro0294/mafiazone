@@ -3,8 +3,6 @@
 include "notLoggedIn.php";
 include "chatbox.php";
 
-
-
 $username = $_SESSION['username'];
 
 $stmt = $pdo->prepare("SELECT gezondheid FROM users WHERE gebruikersnaam = :username");
@@ -92,6 +90,14 @@ foreach ($rows as $row) {
     <a href='bank.php'>Bank</a>
     <a href='sporthal.php'>Sporthal</a>
     <a href='ziekenhuis.php'>Ziekenhuis</a>
+    ";
+    $stmt = $pdo->prepare("SELECT admin FROM users WHERE gebruikersnaam = :gebruikersnaam");
+    $stmt->execute(['gebruikersnaam' => $_SESSION['username']]);
+    $fetch = $stmt->fetch();
+    if ($fetch['admin'] == 'true') {
+        echo "<a href='adminpanel/index.php' style='color: red;'>Admin Paneel</a>";
+    };
+    echo "
     </div>
     ";
     miniChat();
