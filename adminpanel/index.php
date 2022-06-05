@@ -14,7 +14,6 @@ include "../admin_check.php";
     <a href="auto_toevoegen.php">Auto Toevoegen</a><br />
     <a href="auto_wijzigen.php">Auto Wijzigen</a>
     <h2>Spelers</h2>
-    <a href="speler_verbannen.php">Speler Verbannen</a><br />
-    <a href="speler_wijzigen.php">Speler Wijzigen</a>
+    <a href="speler_beheer.php">Speler Beheer</a><br />
 </body>
 </html>

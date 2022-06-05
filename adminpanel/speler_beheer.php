@@ -4,7 +4,7 @@ include "../admin_check.php";
 
 <html>
     <head>
-        <title>MafiaZone - Speler Wijzigen</title>
+        <title>MafiaZone - Speler Beheer</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
@@ -30,6 +30,11 @@ include "../admin_check.php";
                             ]);
                             $rows = $stmt->fetchAll();
                             foreach ($rows as $row) {
+                                if ($row['banned'] == 'true') {
+                                    $banstatus = "Unbannen";
+                                } else {
+                                    $banstatus = "Bannen";
+                                }
                                 echo "
                                 <div class='box2'>
                                 <h2>Speler gegevens</h2>
@@ -37,7 +42,7 @@ include "../admin_check.php";
                                 <form method='post'>
                                 <tr>
                                 <th>Gebruikersnaam</th>
-                                <td>" . $row['gebruikersnaam'] . "</td>
+                                <td><input type='text' style='margin: 0;' readonly name='gebruikersnaam' value='" . $row['gebruikersnaam'] . "'></td>
                                 </tr>
                                 <tr>
                                 <th>Cashgeld</th>
@@ -60,7 +65,8 @@ include "../admin_check.php";
                                 <td><input type='number' name='credits' value='" . $row['credits'] . "'></td>
                                 </tr>
                                 <tr>
-                                <td colspan='2'><input type='submit' name='submitchanges' value='Wijzigen'></td>
+                                <td><input type='submit' name='submitchanges' value='Wijzigen'></td>
+                                <td><input type='submit' class='button' style='background: darkred;' name='banplayer' value='" . $banstatus . "'></td>
                                 </tr>
                                 </form>
                                 </table>
@@ -80,6 +86,7 @@ $bankgeld = $_POST['bankgeld'];
 $power = $_POST['power'];
 $kogels = $_POST['kogels'];
 $credits = $_POST['credits'];
+$username = $_POST['gebruikersnaam'];
 $submitchanges = $_POST['submitchanges'];
 
 if (isset($submitchanges)) {
@@ -90,7 +97,28 @@ if (isset($submitchanges)) {
         'power' => $power,
         'kogels' => $kogels,
         'credits' => $credits,
-        'username' => $_SESSION['username']
+        'username' => $username
     ]);
+}
+
+$banplayer = $_POST['banplayer'];
+
+if (isset($banplayer)) {
+    $stmt = $pdo->prepare("SELECT banned from users WHERE gebruikersnaam = :username");
+                            $stmt->execute([
+                                'username' => $username
+                            ]);
+                            $row = $stmt->fetch();
+    if ($row['banned'] == 'true') {
+        $stmt = $pdo->prepare("UPDATE users SET banned = 'false' WHERE gebruikersnaam = :username");
+        $stmt->execute([
+            'username' => $username
+        ]);
+    } else {
+        $stmt = $pdo->prepare("UPDATE users SET banned = 'true' WHERE gebruikersnaam = :username");
+        $stmt->execute([
+            'username' => $username
+        ]);
+    }
 }
 ?>
