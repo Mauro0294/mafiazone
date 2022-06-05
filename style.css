@@ -1,15 +1,16 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Montserrat";
   background-image: url("/images/mafia2.jpeg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .container {
-  height: 100vh;
+  height: calc(100vh - 200px);
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -36,7 +37,6 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: scale(2.5);
 }
 
 input {
@@ -82,7 +82,7 @@ h2 {
   margin-bottom: 30px;
 }
 
-a {
+.box a {
   margin-left: 0;
   color: grey;
   font-size: 14px;
@@ -93,18 +93,48 @@ a {
 input[type="submit"]:hover {
   background: tomato;
 }
-a:hover {
+.box a:hover {
   color: tomato;
-}
-
-@media screen and (min-width: 500px) {
-  .box {
-    transform: scale(2);
-  }
 }
 
 @media screen and (min-width: 1024px) {
   .box {
     transform: none;
   }
-} ;
+}
+
+ul {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  padding: 20px 50px;
+  color: white;
+  margin-bottom: 100px;
+  border-bottom: 1px solid white;
+  background: #2e3544;
+}
+
+li {
+  font-size: 18px;
+  list-style-type: none;
+}
+
+li:not(:first-of-type) {
+  margin-left: 50px;
+}
+
+li a {
+  text-decoration: none;
+  color: white;
+  padding-bottom: 3px;
+}
+
+.active {
+  border-bottom: 1px solid white;
+}
+
+@media only screen and (max-width: 768px) {
+  ul {
+    margin-bottom: 50px;
+  }
+}

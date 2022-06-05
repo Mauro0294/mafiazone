@@ -6,9 +6,20 @@ session_start();
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
-    <title></title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MafiaZone | Login</title>
+    </title>
 </head>
 <body>
+<ul>
+  <li><a href="index.php" id="first">Home</a></li>
+  <li><a href="login.php" class="active" >Inloggen</a></li>
+  <li><a href="registreer.php">Registreren</a></li>
+</ul>
 <div class="container">
     <div class="box">
         <img src="/images/avatar.png" />
