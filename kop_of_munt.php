@@ -21,8 +21,8 @@ $username = $_SESSION['username'];
         <p>Welkom bij kop of munt. Hieronder krijg je de keuze om kop of munt te kiezen, als je op de knop drukt zal de computer een van deze twee opties kiezen, als je het goed hebt, verdubbel je je inzet, als je het fout hebt, verlies je al je inzet. Veel speelplezier!</p>
         <form method="post">
             <label for='getal'>Hoeveel geld wil je inzetten?</label>
-            <input type='number' name='geld'>
-            <label for="keuze">Kop of munt?</label>
+            <input type='number' min='1' name='geld'>
+            <label for="keuze">Maak een keuze</label>
             <div class='keuzes'>
             <input type='submit' name='kop' value='Kop'>
             <input type='submit' name='munt' value='Munt'>
@@ -32,6 +32,7 @@ $username = $_SESSION['username'];
         <p class='no_money'>Je hebt niet genoeg geld om in te zetten</p>
         <p class='winwrapper'>Je hebt gewonnen! Je hebt <span class='win'></span> euro verdiend</p>
         <p class='losswrapper'>Je hebt verloren! Je hebt <span class='loss'></span> euro verloren</p>
+        <a href='status.php'>Ga terug naar het overzicht</a>
         </div>
         </div>
     </body>

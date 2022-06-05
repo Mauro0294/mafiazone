@@ -78,3 +78,7 @@ input[type="submit"]:hover {
 .losswrapper {
   display: none;
 }
+
+label {
+  margin-top: 25px;
+}

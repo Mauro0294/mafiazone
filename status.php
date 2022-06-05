@@ -90,12 +90,13 @@ foreach ($rows as $row) {
     <a href='bank.php'>Bank</a>
     <a href='sporthal.php'>Sporthal</a>
     <a href='ziekenhuis.php'>Ziekenhuis</a>
+    <a href='kop_of_munt.php'>Kop of munt</a>
     ";
     $stmt = $pdo->prepare("SELECT admin FROM users WHERE gebruikersnaam = :gebruikersnaam");
     $stmt->execute(['gebruikersnaam' => $_SESSION['username']]);
     $fetch = $stmt->fetch();
     if ($fetch['admin'] == 'true') {
-        echo "<a href='adminpanel/index.php' style='color: red;'>Admin Paneel</a>";
+        echo "<a href='adminpanel/index.php' style='color: red; margin-top: 20px'>Admin Paneel</a>";
     };
     echo "
     </div>
