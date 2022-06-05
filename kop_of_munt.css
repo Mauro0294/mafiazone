@@ -73,6 +73,8 @@ input[type="submit"]:hover {
   border-bottom: 1px solid white;
 }
 
-.no_money {
+.no_money,
+.winwrapper,
+.losswrapper {
   display: none;
 }

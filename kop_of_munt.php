@@ -28,7 +28,10 @@ $username = $_SESSION['username'];
             <input type='submit' name='munt' value='Munt'>
             </div>
         </form>
+        <p>Huidige cashgeld: <span class='saldo'></span></p>
         <p class='no_money'>Je hebt niet genoeg geld om in te zetten</p>
+        <p class='winwrapper'>Je hebt gewonnen! Je hebt <span class='win'></span> euro verdiend</p>
+        <p class='losswrapper'>Je hebt verloren! Je hebt <span class='loss'></span> euro verloren</p>
         </div>
         </div>
     </body>
@@ -50,10 +53,10 @@ $stmt = $pdo->prepare("SELECT cashgeld FROM users WHERE gebruikersnaam = :userna
 $stmt->execute(['username' => $username]);
 $saldofetch = $stmt->fetch();
 $saldo = $saldofetch['cashgeld'];
+echo "<script>document.querySelector('.saldo').innerText = $saldo</script>";
 
 if (isset($keuze_kop)) {
     $keuze = 'kop';
-    echo "Je huidige saldo is: $saldo";
     if ($geld > $saldo) {
         echo "<script>document.querySelector('.no_money').style.display = 'block'</script>";
     } else {
@@ -61,12 +64,14 @@ if (isset($keuze_kop)) {
             $saldo += $geld;
             $stmt = $pdo->prepare("UPDATE users SET cashgeld = :cashgeld WHERE gebruikersnaam = :username");
             $stmt->execute(['cashgeld' => $saldo, 'username' => $username]);
-            echo '<p>Je hebt gewonnen! Je hebt ' . $geld . ' euro verdiend</p>';
+            echo "<script>document.querySelector('.win').innerText = $geld</script>";
+            echo "<script>document.querySelector('.winwrapper').style.display = 'block'</script>";
         } else {
             $saldo -= $geld;
             $stmt = $pdo->prepare("UPDATE users SET cashgeld = :cashgeld WHERE gebruikersnaam = :username");
             $stmt->execute(['cashgeld' => $saldo, 'username' => $username]);
-            echo '<p>Je hebt verloren! Je hebt ' . $geld . ' euro verloren</p>';
+            echo "<script>document.querySelector('.loss').innerText = $geld</script>";
+            echo "<script>document.querySelector('.losswrapper').style.display = 'block'</script>";
         }
     }
 }
@@ -80,12 +85,14 @@ if (isset($keuze_zwart)) {
             $saldo += $geld;
             $stmt = $pdo->prepare("UPDATE users SET cashgeld = :cashgeld WHERE gebruikersnaam = :username");
             $stmt->execute(['cashgeld' => $saldo, 'username' => $username]);
-            echo '<p>Je hebt gewonnen! Je hebt ' . $geld . ' euro verdiend</p>';
+            echo "<script>document.querySelector('.win').innerText = $geld</script>";
+            echo "<script>document.querySelector('.winwrapper').style.display = 'block'</script>";
         } else {
             $saldo -= $geld;
             $stmt = $pdo->prepare("UPDATE users SET cashgeld = :cashgeld WHERE gebruikersnaam = :username");
             $stmt->execute(['cashgeld' => $saldo, 'username' => $username]);
-            echo '<p>Je hebt verloren! Je hebt ' . $geld . ' euro verloren</p>';
+            echo "<script>document.querySelector('.loss').innerText = $geld</script>";
+            echo "<script>document.querySelector('.losswrapper').style.display = 'block'</script>";
         }
     }
 }
