@@ -92,14 +92,14 @@ include "notLoggedIn.php";
     }
     ?>
     <tr>
-    <th colspan='2'>Rijkste spelers</th>
+    <th colspan='2'>Rijkste spelers (bankgeld)</th>
     </tr>
     <?php
     $stmt = $pdo->prepare("SELECT * FROM users ORDER BY bankgeld DESC LIMIT 10");
     $stmt->execute();
     $rows = $stmt->fetchAll();
     foreach($rows as $row) {
-        $geld = $row['cashgeld'] + $row['bankgeld'];
+        $geld = $row['bankgeld'];
         echo "<tr>";
         echo "<td>" . $row['gebruikersnaam'] . "</td>";
         echo "<td>" . number_format($geld, 0, ',', '.') . "</td>";

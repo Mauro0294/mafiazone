@@ -5,7 +5,6 @@ include "../admin_check.php";
 <html>
 <head>
     <title>Admin Paneel</title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <h1>Admin Paneel</h1>
