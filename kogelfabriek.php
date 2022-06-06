@@ -19,8 +19,10 @@ $kogelprijs = 2500;
                 <td>Maximale aantal kogels</td>
                 <td>
                     <?php 
-                    $stmt = $pdo->prepare("SELECT cashgeld FROM users WHERE gebruikersnaam = '$username'");
-                    $stmt->execute();
+                    $stmt = $pdo->prepare("SELECT cashgeld FROM users WHERE gebruikersnaam = :username");
+                    $stmt->execute([
+                        'username' => $username
+                    ]);
                     $row = $stmt->fetch();
                     $cash = $row['cashgeld'];
                     $kogels = floor($cash / $kogelprijs);
@@ -44,8 +46,10 @@ $kogelprijs = 2500;
 $submit = $_POST['submit'];
 $amount = $_POST['amount'];
 if (isset($submit)) {
-    $stmt = $pdo->prepare("SELECT cashgeld FROM users WHERE gebruikersnaam = '$username'");
-    $stmt->execute();
+    $stmt = $pdo->prepare("SELECT cashgeld FROM users WHERE gebruikersnaam = :username");
+    $stmt->execute([
+        'username' => $username
+    ]);
     $row = $stmt->fetch();
     $cash = $row['cashgeld'];
     $cost = $amount * $kogelprijs;
@@ -53,17 +57,23 @@ if (isset($submit)) {
         echo "Je hebt niet genoeg geld om zoveel kogels te kopen!";
     } else {
         $cash -= $cost;
-        $stmt = $pdo->prepare("UPDATE users SET cashgeld = '$cash' WHERE gebruikersnaam = '$username'");
-        $stmt->execute();
+        $stmt = $pdo->prepare("UPDATE users SET cashgeld = '$cash' WHERE gebruikersnaam = :username");
+        $stmt->execute([
+            'username' => $username
+        ]);
 
-        $stmt = $pdo->prepare("SELECT kogels FROM users WHERE gebruikersnaam = '$username'");
-        $stmt->execute();
+        $stmt = $pdo->prepare("SELECT kogels FROM users WHERE gebruikersnaam = :username");
+        $stmt->execute([
+            'username' => $username
+        ]);
         $row = $stmt->fetch();
         $kogels = $row['kogels'];
         $kogels += $amount;
 
-        $stmt = $pdo->prepare("UPDATE users SET kogels = '$kogels' WHERE gebruikersnaam = '$username'");
-        $stmt->execute();
+        $stmt = $pdo->prepare("UPDATE users SET kogels = '$kogels' WHERE gebruikersnaam = :username");
+        $stmt->execute([
+            'username' => $username
+        ]);
         echo "Je hebt " . $amount . " kogels gekocht!";
     }
 }
