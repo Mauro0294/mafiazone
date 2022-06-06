@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #2e3544;
+  color: white;
+  font-family: "Montserrat";
+}
+
+* {
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+}
+
+h2 {
+  color: white;
+  font-size: 60px;
+  margin-bottom: 25px;
+}
+
+@media only screen and (max-width: 768px) {
+  h2 {
+    font-size: 50px;
+  }
+}
+
+.wrapper {
+  max-width: 600px;
+  padding: 0 10px;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding-bottom: 5px;
+  margin-top: 10px;
+  border: none;
+  border-bottom: 2px solid white;
+  background: transparent;
+  color: white;
+  font-size: 20px;
+  outline: none;
+}
+
+input[type="submit"] {
+  background: none;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  font-weight: bold;
+  display: block;
+  margin: 0;
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  margin-top: 25px;
+}
+
+label {
+  margin-top: 25px;
+}
+
+select {
+  background: none;
+  border: 1px solid white;
+  outline: none;
+}
+
+.no_money,
+.winwrapper,
+.losswrapper {
+  display: none;
+}

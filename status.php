@@ -90,6 +90,7 @@ foreach ($rows as $row) {
     <a href='bank.php'>Bank</a>
     <a href='sporthal.php'>Sporthal</a>
     <a href='ziekenhuis.php'>Ziekenhuis</a>
+    <a href='raad_het_getal.php'>Raad het getal</a>
     <a href='kop_of_munt.php'>Kop of munt</a>
     ";
     $stmt = $pdo->prepare("SELECT admin FROM users WHERE gebruikersnaam = :gebruikersnaam");

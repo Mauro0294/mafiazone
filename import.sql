@@ -69,6 +69,13 @@ CREATE TABLE cooldowns (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE methlab (
+    id int(11) AUTO_INCREMENT,
+    user_id int(11),
+    time int(11),
+    PRIMARY KEY (id)
+);
+
 INSERT INTO cooldowns (event, time) VALUES
 ('misdaad', 90),
 ('auto_stelen', 180),
