@@ -48,7 +48,7 @@ if ($random_number == 1) {
 
 $geld = $_POST['geld'];
 $keuze_kop = $_POST['kop'];
-$$keuze_munt = $_POST['munt'];
+$keuze_munt = $_POST['munt'];
 
 $stmt = $pdo->prepare("SELECT cashgeld FROM users WHERE gebruikersnaam = :username");
 $stmt->execute(['username' => $username]);
@@ -77,8 +77,8 @@ if (isset($keuze_kop)) {
     }
 }
 
-if (isset($keuze_zwart)) {
-    $keuze = 'zwart';
+if (isset($keuze_munt)) {
+    $keuze = 'munt';
     if ($geld > $saldo) {
         echo "<script>document.querySelector('.no_money').style.display = 'block'</script>";
     } else {
