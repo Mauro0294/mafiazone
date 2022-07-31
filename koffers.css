@@ -1,0 +1,28 @@
+body {
+    font-size: 62.5%;
+    color: white;
+    background: #191919;
+}
+
+#koffer_icon {
+    color: #7683d9;
+    border-radius: 50%;
+    background: #222;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+button {
+    border: 1px solid black;
+    background: #191919;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+}
