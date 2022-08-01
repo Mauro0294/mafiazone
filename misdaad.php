@@ -79,6 +79,13 @@ if (isset($submit)) {
     $randomnumber = rand(1, 3);
     $cashgeld = rand(25000, 50000);
     if ($randomnumber == 1) { 
+        $getkoffer = rand(1, 5);
+        if ($getkoffer == 5) {
+            $stmt = $pdo->prepare("UPDATE users SET koffers = koffers + 1 WHERE gebruikersnaam = :username");
+            $stmt->execute([
+                'username' => $username
+            ]);
+        }
         $stmt = $pdo->prepare("UPDATE users SET cashgeld = cashgeld + :cashgeld WHERE gebruikersnaam = :username");
         $stmt->execute([
             'cashgeld' => $cashgeld,

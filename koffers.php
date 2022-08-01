@@ -1,27 +1,12 @@
-<?php
-include "notLoggedIn.php";
-
-$username = $_SESSION['username'];
-?>
-
 <html>
     <head>
         <link rel="stylesheet" href="koffers.css">
         <script src="https://kit.fontawesome.com/44d0f25a2a.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <div class='sidebar'>
-        <div class='username'><?php echo $username ?></div>
-        <ul>
-                <h3>Criminaliteit</h3>
-                <li>Misdaad plegen</li>
-                <li>Auto stelen</li>
-                <h3>Omgeving</h3>
-                <li>Kogelfabriek</li>
-                <li>Sporthal</li>
-            </ul>
-        </div>
+        <?php include "sidebar.php" ?>
         <div class="wrapper">
+        <?php include "topbar.php" ?>
         <div class='content'>
         <h2>Koffers</h2>
         <div class="contentwrapper">
@@ -30,7 +15,15 @@ $username = $_SESSION['username'];
     $stmt->execute(['username' => $username]);
     $kofferfetch = $stmt->fetch();
     $koffer = $kofferfetch['koffers'];
-    echo $koffer ?> koffers
+    if ($koffer == 0) {
+        echo "geen";
+    } else {
+    echo $koffer;
+    }?> <?php if ($koffer == 1) {
+        echo "koffer";
+    } else {
+        echo "koffers";
+    }; ?>
         <div>
         <form method="POST">
             <?php

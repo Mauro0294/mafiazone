@@ -10,15 +10,21 @@ body {
 }
 
 #koffer_icon {
-    color: #7683d9;
+    color: #e01d1a;
     border-radius: 50%;
     background: #222;
     font-size: 2rem;
     padding: 1rem;
 }
 
+#icon {
+    color: #e01d1a;
+    margin-right: 10px;
+    width: 30px;
+}
+
 h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 p {
@@ -36,16 +42,6 @@ button {
     cursor: pointer;
 }
 
-.sidebar {
-    margin: 0;
-    padding: 0;
-    width: 250px;
-    background: black;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-}
-
 .content {
     margin-left: 300px;
     width: 750px;
@@ -58,34 +54,50 @@ button {
     margin: 0;
 }
 
-.username {
-    width: 100%;
-    padding: 15px 0;
-    text-align: center;
-    font-size: 1.2rem;
-    background: #1D2124;
-}
-
 h3 {
     font-size: 0.8rem;
     margin: 0;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: grey;
     text-transform: uppercase;
     margin-top: 1.5rem;
 }
 
 li {
-    font-size: 1rem;
+    font-size: 0.9rem;
     list-style-type: none;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    transition: 0.5s;
+    padding: 10px;
+    border-radius: 4px;
+    color: #e5d6d6;
+    cursor: pointer;
+}
+
+a {
+    color: #e5d6d6;
+    text-decoration: none;
+}
+
+li:hover {
+    background: #222528;
+}
+
+ul {
+    padding: 0 25px;
 }
 
 .wrapper {
     width: 100%;
-    /* background: blue; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+span, p {
+    font-size: 0.9rem;
 }

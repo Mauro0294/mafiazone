@@ -1,0 +1,11 @@
+.topbar {
+    width: 100%;
+    padding: 4.5px 0;
+    text-align: center;
+    font-size: 1.2rem;
+    background: #080808;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    margin-left: 200px;
+}
