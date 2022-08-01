@@ -71,6 +71,13 @@ if (isset($submit)) {
         <script>
         document.querySelector('.possible').style.display = 'none';
         </script>";
+        $getkoffer = rand(1, 5);
+        if ($getkoffer == 5) {
+            $stmt = $pdo->prepare("UPDATE users SET koffers = koffers + 1 WHERE gebruikersnaam = :username");
+            $stmt->execute([
+                'username' => $username
+            ]);
+        }
 
         $stmt = $pdo->prepare("SELECT * FROM autos");
         $stmt->execute();
