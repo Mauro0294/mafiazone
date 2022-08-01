@@ -2,6 +2,11 @@ body {
     font-size: 62.5%;
     color: white;
     background: #191919;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    background: url("https://boef.nl/assets/media/themes/xboef/boef_pattern.jpg");
 }
 
 #koffer_icon {
@@ -13,11 +18,15 @@ body {
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 p {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+}
+
+.contentwrapper {
+    padding: 10px 20px;
 }
 
 button {
@@ -25,4 +34,58 @@ button {
     background: #191919;
     padding: 1.5rem 2rem;
     cursor: pointer;
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    background: black;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.content {
+    margin-left: 300px;
+    width: 750px;
+    background: #191919;
+}
+
+.content h2 {
+    background: black;
+    padding: 20px;
+    margin: 0;
+}
+
+.username {
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 1.2rem;
+    background: #1D2124;
+}
+
+h3 {
+    font-size: 0.8rem;
+    margin: 0;
+    margin-bottom: 0.75rem;
+    color: grey;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+}
+
+li {
+    font-size: 1rem;
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+.wrapper {
+    width: 100%;
+    /* background: blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
 }

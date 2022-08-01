@@ -10,7 +10,21 @@ $username = $_SESSION['username'];
         <script src="https://kit.fontawesome.com/44d0f25a2a.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <div class='sidebar'>
+        <div class='username'><?php echo $username ?></div>
+        <ul>
+                <h3>Criminaliteit</h3>
+                <li>Misdaad plegen</li>
+                <li>Auto stelen</li>
+                <h3>Omgeving</h3>
+                <li>Kogelfabriek</li>
+                <li>Sporthal</li>
+            </ul>
+        </div>
+        <div class="wrapper">
+        <div class='content'>
         <h2>Koffers</h2>
+        <div class="contentwrapper">
         <p>Koffers vind je tijdens het spelen van MafiaZone. Ze bevatten cash, kogels en credits! Je ontvangt een bericht wanneer je een koffer gevonden hebt.<br /><br /> Klik op een koffer, om hem te openen, je ziet meteen, wat erin zit.<br /> <br />
         Je hebt momenteel <?php $stmt = $pdo->prepare("SELECT koffers FROM users WHERE gebruikersnaam = :username");
     $stmt->execute(['username' => $username]);
@@ -28,6 +42,9 @@ $username = $_SESSION['username'];
              ?>
         </form>
         </div>
+            </div>
+        </div>
+            </div>
     </body>
 </html>
 
