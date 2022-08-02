@@ -1,3 +1,7 @@
+<?php
+include "notLoggedIn.php";
+?>
+
 <html>
     <head>
         <link rel="stylesheet" href="koffers.css">
