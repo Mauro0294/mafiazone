@@ -8,7 +8,12 @@ $kogelprijs = 2500;
 ?>
 
 <html>
+<?php include "sidebar.php" ?>
+        <div class="wrapper">
+        <?php include "topbar.php" ?>
+        <div class='content'>
     <h2>Kogel Fabriek</h2>
+    <div class="contentwrapper">
     <form method='POST'>
         <table width='250px'>
             <tr>

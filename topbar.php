@@ -14,5 +14,6 @@ $bankfetch = $stmt->fetch();
 $bankgeld = number_format($bankfetch['bankgeld'], 0, ',', '.');
 
 echo 
-"<div class='topbar'><p>Cash: €$cashgeld <span>Bank: €$bankgeld</span></p></div>"
+"<div class='topbar'>
+<p>Cash: €$cashgeld <span>Bank: €$bankgeld</span></p></div>"
 ?>
