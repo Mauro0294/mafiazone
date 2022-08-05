@@ -1,6 +1,5 @@
 <?php
 include "notLoggedIn.php";
-error_reporting(0);
 $username = $_SESSION['username'];
 ?>
 
@@ -29,14 +28,23 @@ foreach ($rows as $row) {
 ?>
 <tr>
     <td><?php echo $row['speler'] ?></td>
-    <td><?php echo $row['inzet'] ?></td>
+    <td><?php echo "€" . number_format($row['inzet'], 0, ',', '.') ?></td>
     <td><button type='submit' name='submit' value='<?php $row['speler'] ?>'><i class='fa-solid fa-car' style='color: red;'></i></button></td>
 </tr>
 <?php
 if (isset($_POST['submit'])) {
+    $stmt = $pdo->prepare("SELECT cashgeld from users WHERE gebruikersnaam = :username");
+    $stmt->execute([':username' => $username]);
+    $data = $stmt->fetch();
+    $cashgeld = $data['cashgeld'];
+    if ($data['cashgeld'] < $row['inzet']) {
+        echo "<script>alert('Je hebt niet genoeg geld voor deze straatrace!')</script>";
+        return;
+    };
+
     $random = rand(1, 2);
     $inzet = $row['inzet'] * 2;
-    $stmt = $pdo->prepare("DELETE FROM straatraces where speler = :speler");
+    $stmt = $pdo->prepare("DELETE FROM straatraces WHERE speler = :speler");
     $stmt->execute([':speler' => $row['speler']]);
     if ($random == 1) {
         $stmt = $pdo->prepare("UPDATE users SET cashgeld = cashgeld + :inzet WHERE gebruikersnaam = :username");

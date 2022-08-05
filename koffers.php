@@ -47,33 +47,36 @@ include "notLoggedIn.php";
 
 <?php
 if (isset($_POST['submit'])) {
-    if ($koffer < 0) return;
+    if ($koffer < 1) return;
     $stmt = $pdo->prepare("UPDATE users SET koffers = koffers - 1 WHERE gebruikersnaam = :username");
     $stmt->execute(['username' => $username]);
 
     $keuze = rand(0, 2);
     switch ($keuze) {
         case 0:
-            $randommoney = rand(50000, 200000);
+            $randommoney = rand(100000, 250000);
+            header("Refresh: 3");
             $stmt = $pdo->prepare("UPDATE users SET cashgeld = cashgeld + :randommoney WHERE gebruikersnaam = :username");
             $stmt->execute(['randommoney' => $randommoney, 'username' => $username]);
-            header("Refresh: 0");
-            return;
+            echo "<script>alert('Je hebt €$randommoney gevonden in de koffer!');</script>";
+            break;
         case 1:
-            $randomcredits = rand(1, 10);
+            $randomcredits = rand(5, 15);
+            header("Refresh: 3");
             $stmt = $pdo->prepare("UPDATE users SET credits = credits + :randomcredits WHERE gebruikersnaam = :username");
             $stmt->execute(['randomcredits' => $randomcredits, 'username' => $username]);
-            header("Refresh: 0");
-            return;
+            echo "<script>alert('Je hebt $randomcredits credits gevonden in de koffer!');</script>";
+            break;
         case 2:
-            $randombullets = rand(10, 100);
-            $randommoney = rand(50000, 200000);
+            $randombullets = rand(25, 75);
+            $randommoney = rand(100000, 250000);
             $stmt = $pdo->prepare("UPDATE users SET kogels = kogels + :randombullets WHERE gebruikersnaam = :username");
             $stmt->execute(['randombullets' => $randombullets, 'username' => $username]);
+
             $stmt = $pdo->prepare("UPDATE users SET cashgeld = cashgeld + :randommoney WHERE gebruikersnaam = :username");
             $stmt->execute(['randommoney' => $randommoney, 'username' => $username]);
-            header("Refresh: 0");
-            return;
+            echo "<script>alert('Je hebt €$randommoney en $randombullets kogels gevonden in de koffer!');</script>";
+            break;
     }
 }
 ?>

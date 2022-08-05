@@ -31,6 +31,7 @@ echo
                 <li><a href='hoger_of_lager.php'><i id='icon' class='fa-solid fa-up-down'></i>Hoger of lager</a></li>
                 <li><a href='kop_of_munt.php'><i id='icon' class='fa-solid fa-coins'></i>Kop of munt</a></li>
                 <h3>Overige</h3>
+                <li><a href='creditshop.php'><i id='icon' class='fa fa-shop' aria-hidden='true'></i>Creditshop</a></li>
                 <li><a href='koffers.php'><i id='icon' class='fa fa-briefcase' aria-hidden='true'></i>Koffers</a></li>
                 <li><a href='logout.php'><i id='icon' class='fa fa-sign-out' aria-hidden='true'></i>Uitloggen</a></li>
             </ul>

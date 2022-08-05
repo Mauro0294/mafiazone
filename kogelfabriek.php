@@ -8,12 +8,16 @@ $kogelprijs = 2500;
 ?>
 
 <html>
+    <head>
+        <link rel="stylesheet" href="kogelfabriek.css">
+    </head>
 <?php include "sidebar.php" ?>
         <div class="wrapper">
         <?php include "topbar.php" ?>
         <div class='content'>
     <h2>Kogel Fabriek</h2>
     <div class="contentwrapper">
+        <p>Om iemand te vermoorden of aan te vallen heb je kogels nodig, deze kan je hier kopen.<br />Momenteel zijn er oneindig kogels in voorraad</p>
     <form method='POST'>
         <table width='250px'>
             <tr>
@@ -42,7 +46,7 @@ $kogelprijs = 2500;
                 <td>€<?php echo number_format($kogelprijs, 0, ',', '.'); ?> per kogel</td>
             </tr>
         </table>
-        Koop <input type='number' name='amount'/>  kogels<br />
+        <p>Aantal kogels om te kopen<br/> <input type='number' name='amount'/></p><br />
         <input type='submit' name='submit' value='Koop kogels'/>
     </form>
 </html>
@@ -59,7 +63,7 @@ if (isset($submit)) {
     $cash = $row['cashgeld'];
     $cost = $amount * $kogelprijs;
     if ($cash < $cost) {
-        echo "Je hebt niet genoeg geld om zoveel kogels te kopen!";
+        echo "<p>Je hebt niet genoeg geld om zoveel kogels te kopen!</p>";
     } else {
         $cash -= $cost;
         $stmt = $pdo->prepare("UPDATE users SET cashgeld = '$cash' WHERE gebruikersnaam = :username");
@@ -79,7 +83,7 @@ if (isset($submit)) {
         $stmt->execute([
             'username' => $username
         ]);
-        echo "Je hebt " . $amount . " kogels gekocht!";
+        echo "<p>Je hebt " . $amount . " kogels gekocht!</p>";
     }
 }
 ?>

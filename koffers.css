@@ -7,6 +7,7 @@ body {
     padding: 0;
     font-family: Arial;
     background: url("https://boef.nl/assets/media/themes/xboef/boef_pattern.jpg");
+    overflow-x: hidden;
 }
 
 #koffer_icon {

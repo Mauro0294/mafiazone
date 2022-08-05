@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 .contentwrapper {
     padding: 10px 20px;
 }

@@ -92,7 +92,7 @@ if (isset($submit)) {
             'username' => $username
         ]);
         $options = array('Je hebt een winkel overvallen!', 'Je hebt scooters gestolen!', 'Je hebt een paar elektrische fietsen gestolen!', 'Je hebt juwelen gestolen!', 'Je hebt een kunstwerk gestolen!', 'Je hebt een pinautomaat ge-ramkraakt!');
-        $x = rand(0, count($options));
+        $x = rand(0, count($options) - 1);
         $cashgeld = number_format($cashgeld, 0, ',', '.');
         echo "" . $options[$x] . "<br /> Je hebt $cashgeld euro hiermee verdiend!\n";
         echo "
