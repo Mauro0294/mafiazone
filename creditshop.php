@@ -23,7 +23,7 @@ foreach ($rows as $row) {
             <th>Optie</th>
             <th>Credits</th>
         </tr>
-        <tr>
+        <!-- <tr>
             <td><input type='radio' name='keuze' value='power1' /></td>
             <td>500.000 power</td>
             <td>Kost 100 credits</td>
@@ -32,15 +32,15 @@ foreach ($rows as $row) {
             <td><input type='radio' name='keuze' value='power2' /></td>
             <td>1.500.000 power</td>
             <td>Kost 300 credits</td>
-        </tr>
+        </tr> -->
         <tr>
             <td><input type='radio' name='keuze' value='bank1' /></td>
-            <td>20.000.000 bankgeld</td>
+            <td>2.000.000 bankgeld</td>
             <td>Kost 50 credits</td>
         </tr>
         <tr>
             <td><input type='radio' name='keuze' value='bank2' /></td>
-            <td>50.000.000 bankgeld</td>
+            <td>5.000.000 bankgeld</td>
             <td>Kost 125 credits</td>
         </tr>
             <td colspan='2'><b>Huidige credits:</b>
@@ -112,7 +112,7 @@ foreach ($rows as $row) {
                 }
             case "bank1":
                 if ($credits >= 50 * $aantal) {
-                    $bank += 20000000 * $aantal;
+                    $bank += 2000000 * $aantal;
                     $credits -= 50 * $aantal;
                     $stmt1 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . " WHERE gebruikersnaam = :username");
                     $stmt2 = $pdo->prepare("UPDATE users SET credits = " . $credits . " WHERE gebruikersnaam = :username");
@@ -130,7 +130,7 @@ foreach ($rows as $row) {
                 }
             case "bank2":
                 if ($credits >= 125 * $aantal) {
-                    $bank += 50000000 * $aantal;
+                    $bank += 5000000 * $aantal;
                     $credits -= 125 * $aantal;
                     $stmt1 = $pdo->prepare("UPDATE users SET bankgeld = " . $bank . " WHERE gebruikersnaam = :username");
                     $stmt2 = $pdo->prepare("UPDATE users SET credits = " . $credits . " WHERE gebruikersnaam = :username");

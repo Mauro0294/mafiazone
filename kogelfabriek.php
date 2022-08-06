@@ -4,7 +4,7 @@ include "notLoggedIn.php";
 
 
 $username = $_SESSION['username'];
-$kogelprijs = 2500;
+$kogelprijs = 1500;
 ?>
 
 <html>
