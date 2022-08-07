@@ -5,7 +5,7 @@ function miniChat() {
 
     echo "
     <table id='table' width=300px;>";
-    $datapdo2 = "SELECT * FROM messages ORDER BY id ASC LIMIT 10";
+    $datapdo2 = "SELECT * FROM messages ORDER BY id DESC LIMIT 10";
     $stmtpdo2 = $pdo->prepare($datapdo2);
     $stmtpdo2->execute();
     $rowpdo2 = $stmtpdo2->fetchAll(PDO::FETCH_ASSOC);

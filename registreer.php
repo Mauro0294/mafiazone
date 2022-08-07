@@ -12,12 +12,22 @@ session_start();
     />
     <title>MafiaZone | Registreer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/44d0f25a2a.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<ul>
-      <li><a href="index.php" id="first">Home</a></li>
-      <li><a href="login.php">Inloggen</a></li>
-      <li><a href="registreer.php" class="active" >Registreren</a></li>
+<ul class='ul'>
+        <li><i class="fa-solid fa-bars icon" id='display' onclick="openMenu()"></i><i class="fa-solid fa-xmark icon" id='display2' onclick='closeMenu()'></i><a href='index.php' class='logo'>MafiaZone</a></li>
+        <div class='hide'>
+            <li><a href="index.php" id="first">Home</a></li>
+            <li><a href="login.php">Game</a></li>
+            <li><a href="#">Info</a></li>
+        </div>
+        <li><a href='login.php' class='login'><button>Login</button></a></li>
+    </ul>
+    <ul class='dropdown'>
+    <li><a href="index.php" id="first">Home</a></li>
+        <li><a href='login.php'>Game</a></li>
+        <li><a href='#'>Info</a></li>
     </ul>
 <div class="container">
     <div class="box">
@@ -50,6 +60,7 @@ session_start();
         </form>
     </div>
 </div>
+<script src='menu.js'></script>	
 </body>
 </html>
 

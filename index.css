@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+    background: url("images/background.png");
+    overflow: hidden;
+}
+
+.dropdown {
+    background: black;
+    margin: 0;
+    border-top: 2px solid white;
+    padding: 0px 25px;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+    max-height: 0;
+    transition: 0.5s;
+    z-index: 99;
+}
+
+.menu-open {
+    padding: 10px 25px;
+    max-height: 100px;
+    transition: 0.5s;
+}
+
+.dropdown li {
+    list-style-type: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.ul {
+    display: flex;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background: black;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.logo {
+    font-size: 22px;
+    margin-left: 25px;
+}
+
+.icon {
+    margin-left: 25px;
+}
+
+#display {
+    display: none;
+}
+
+#display2 {
+    display: none;
+    font-size: 20px;
+}
+
+.ul li {
+    font-size: 18px;
+    list-style-type: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+}
+
+.ul div {
+    display: flex;
+    column-gap: 100px;
+}
+
+li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login button {
+    color: white;
+    background: #A10216;
+    height: 100%;
+    padding: 0 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+}
+
+.register {
+    color: white;
+    text-transform: uppercase;
+}
+
+.register button {
+    background: #A10216;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.register h1 {
+    background: black;
+    display: inline-block;
+    padding: 5px;
+    text-align: center;
+}
+
+.container {
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 85%;
+    position: relative;
+}
+
+button {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 769px) {
+    .ul .hide {
+        display: none;
+    }
+    .center {
+        display: flex;
+        justify-content: center;
+    }
+    #display {
+        display: inline;
+    }
+}

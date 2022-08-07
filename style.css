@@ -17,6 +17,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 100px;
 }
 
 img {
@@ -104,38 +105,105 @@ input[type="submit"]:hover {
   }
 }
 
-ul {
-  display: flex;
+.dropdown {
+  background: black;
+  margin: 0;
+  border-top: 2px solid white;
+  padding: 0px 25px;
   overflow: hidden;
-  justify-content: center;
-  padding: 20px 50px;
-  color: white;
-  margin-bottom: 100px;
-  border-bottom: 1px solid white;
-  background: #2e3544;
-}
-
-li {
-  font-size: 18px;
-  list-style-type: none;
-}
-
-li:not(:first-of-type) {
-  margin-left: 50px;
+  width: 100%;
+  position: fixed;
+  max-height: 0;
+  transition: 0.5s;
+  z-index: 99;
+  font-family: "Arial";
 }
 
 li a {
-  text-decoration: none;
   color: white;
-  padding-bottom: 3px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.active {
-  border-bottom: 1px solid white;
+.menu-open {
+  padding: 10px 25px;
+  max-height: 100px;
+  transition: 0.5s;
 }
 
-@media only screen and (max-width: 768px) {
-  ul {
-    margin-bottom: 50px;
+.dropdown li {
+  list-style-type: none;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.ul {
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background: black;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: "Arial";
+}
+.logo {
+  font-size: 22px;
+  margin-left: 25px;
+}
+
+.icon {
+  margin-left: 25px;
+}
+
+#display {
+  display: none;
+}
+
+#display2 {
+  display: none;
+  font-size: 20px;
+}
+
+.ul li {
+  font-size: 18px;
+  list-style-type: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative;
+}
+
+.ul div {
+  display: flex;
+  column-gap: 100px;
+}
+
+li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login button {
+  color: white;
+  background: #A10216;
+  height: 100%;
+  padding: 0 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+}
+
+@media screen and (max-width: 769px) {
+  .ul .hide {
+      display: none;
+  }
+  #display {
+      display: inline;
   }
 }
