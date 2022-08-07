@@ -12,6 +12,7 @@ session_start();
     />
     <title>MafiaZone | Registreer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <script src="https://kit.fontawesome.com/44d0f25a2a.js" crossorigin="anonymous"></script>
 </head>
 <body>
