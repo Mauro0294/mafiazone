@@ -1,31 +1,26 @@
 <?php
 include "notLoggedIn.php";
-
-
-
 $username = $_SESSION['username'];
 ?>
 
 <html>
-    <form method='POST'>
-        <table>
-            <tr>
-                <th colspan='2'>Moord</th>
-            </tr>
-            <tr>
-                <td>Slachtoffer</td>
-                <td><input type='text' name='victim'/></td>
-            </tr>
-            <tr>
-                <td>Kogels</td>
-                <td><input type='number' name='bullets' /></td>
-            </tr>
-            <tr>
-                <td><input type='submit' name='submit' value='Vermoord persoon'></td>
-            </tr>
-        </table>
-    </form>
-    <p>Let op, je hebt 100 kogels per 1% gezondheid nodig om iemand te vermoorden!</p>
+    <head><link rel='stylesheet' href='murder.css'></head>
+    <body>
+    <?php include "sidebar.php" ?>
+        <div class="wrapper">
+        <?php include "topbar.php" ?>
+        <div class='content'>
+        <h2>Moord</h2>
+        <div class="contentwrapper">
+        <form method='POST'>
+            <label>Slachtoffer</label><br />
+            <input type='text' name='victim'/><br />
+            <label>Kogels</label><br />
+            <input type='number' name='bullets' /><br />
+            <input type='submit' name='submit' value='Vermoord persoon'>
+        </form>
+        <p>Let op, je hebt 100 kogels per 1% gezondheid nodig om iemand te vermoorden!</p>
+    </body>
 </html>
 
 <?php

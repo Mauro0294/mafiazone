@@ -56,10 +56,8 @@ foreach ($rows as $row) {
         $cash = $row['cashgeld'];
         $amount = $_POST['amount'];
         $spelerpower = $row['power'];
-        if ($cash >= $prijs) {
+        if ($cash >= $prijs * $amount) {
             if ($amount >= 1) {
-                // Declare variables
-
                 echo "Gekocht!";
                 $cash -= $prijs * $amount;
                 $spelerpower += $power * $amount;

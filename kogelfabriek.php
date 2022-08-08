@@ -1,8 +1,6 @@
 <?php
 include "notLoggedIn.php";
 
-
-
 $username = $_SESSION['username'];
 $kogelprijs = 1500;
 ?>
@@ -11,6 +9,7 @@ $kogelprijs = 1500;
     <head>
         <link rel="stylesheet" href="kogelfabriek.css">
     </head>
+    <body>
 <?php include "sidebar.php" ?>
         <div class="wrapper">
         <?php include "topbar.php" ?>
@@ -48,6 +47,7 @@ $kogelprijs = 1500;
         </table>
         <p>Aantal kogels om te kopen<br/> <input type='number' name='amount'/></p><br />
         <input type='submit' name='submit' value='Koop kogels'/>
+        </body>
     </form>
 </html>
 

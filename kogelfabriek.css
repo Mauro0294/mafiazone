@@ -1,3 +1,8 @@
+body {
+  background: url("images/bullets.jpg") no-repeat;
+  background-size: cover;
+}
+
 input {
     background: #444444;
     color: white;
