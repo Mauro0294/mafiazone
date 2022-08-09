@@ -38,16 +38,21 @@ foreach ($rows as $row) {
 // Power kopen
 $prijs = 2650;
 $power = 100;
-echo "
+?>
+<html>
+<body>
 <br />
     <form method='POST'>
-    <label>" . $power . " power kopen voor " . $prijs ." cash</label><br />
+    <label><?php echo $power ?> power kopen voor <?php echo $prijs?> cash</label><br />
     <label>Aantal</label>
     <input type='number' name='amount'/>
     <input type='submit' value='Koop' name='power' />
     </form>
 ";
+</body>
+</html>
 
+<?php
 $koop = $_POST['power'];
 
 // Power kopen logica

@@ -5,21 +5,24 @@ $username = $_SESSION['username'];
 ?>
 
 <html>
-    <form method='POST'>
-        <table>
-            <tr>
-                <th colspan='2'>Aanvallen</th>
-            </tr>
-            <tr>
-                <td>Slachtoffer</td>
-                <td><input type='text' name='victim'/></td>
-            </tr>
-            <tr>
-                <td><input type='submit' name='submit' value='Val persoon aan'></td>
-            </tr>
-        </table>
+    <head><link rel='stylesheet' href='attack.css'></head>
+    <body>
+    <?php include "sidebar.php" ?>
+        <div class="wrapper">
+        <?php include "topbar.php" ?>
+        <div class='content'>
+        <h2>Aanvallen</h2>
+        <div class="contentwrapper">
+        <form method='POST'>
+        <label>Slachtoffer</label>
+        <input type='text' name='victim'/>
+        <input type='submit' name='submit' value='Val persoon aan'>
     </form>
     <p>Let op, om iemand aan te vallen heb je minimaal 1 kogel nodig.</p>
+</div>
+</div>
+</div>
+    </body>
 </html>
 
 <?php

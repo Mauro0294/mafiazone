@@ -1,17 +1,27 @@
 <?php
 include "notLoggedIn.php";
 
-
-
 $username = $_SESSION['username'];
 ?>
 
 <html>
-    <h2>Ziekenhuis</h2>
-    <form method='POST'>
+    <head><link rel='stylesheet' href='ziekenhuis.css'></head>
+    <body>
+    <?php include "sidebar.php" ?>
+        <div class="wrapper">
+        <?php include "topbar.php" ?>
+        <div class='content'>
+        <h2>Ziekenhuis</h2>
+        <div class="contentwrapper">
+        <form method='POST'>
         <p>Koop <input type='number' name='units'/> eenheden bloed</p>
         <input type='submit' name='submit' value='Koop eenheden'/>
     </form>
+    <p>Een eenheid bloed kost €25</p>
+</div>
+</div>
+</div>
+</body>
 </html>
 
 <?php

@@ -20,6 +20,9 @@ $username = $_SESSION['username'];
             <input type='submit' name='submit' value='Vermoord persoon'>
         </form>
         <p>Let op, je hebt 100 kogels per 1% gezondheid nodig om iemand te vermoorden!</p>
+</div>
+</div>
+</div>
     </body>
 </html>
 
